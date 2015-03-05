@@ -67,3 +67,10 @@
  * Сборка и конфигурирование проектов
  * Конфигурирование балансировщика нагрузки
  * Настройка автоматического деплоя
+
+# Информация
+
+* https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty
+* https://spring.io/guides/gs/spring-boot/
+* https://jdbc.postgresql.org/documentation/80/connect.html
+* http://maven.apache.org/guides/getting-started/
