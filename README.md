@@ -1,5 +1,11 @@
 # yabirthday
 
+## Контакты
+
+* Сергей Киселев: kiselev@gmail.com, https://vk.com/intr13
+
+Общий чат по проекту: ???
+
 ## Идея
 
 Обеспечить платформу для сбора денег и обсуждения подарков. 
@@ -68,7 +74,7 @@
  * Конфигурирование балансировщика нагрузки
  * Настройка автоматического деплоя
 
-# Информация
+## Информация
 
 * https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty
 * https://spring.io/guides/gs/spring-boot/
