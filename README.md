@@ -80,3 +80,11 @@
 * https://spring.io/guides/gs/spring-boot/
 * https://jdbc.postgresql.org/documentation/80/connect.html
 * http://maven.apache.org/guides/getting-started/
+* http://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+* http://en.wikipedia.org/wiki/Representational_state_transfer
+* http://code.tutsplus.com/tutorials/a-beginners-guide-to-http-and-rest--net-16340
+* http://www.mkyong.com/maven/how-to-create-a-java-project-with-maven/
+* http://en.wikipedia.org/wiki/Java_servlet
+* http://pdf.coreservlets.com/Servlet-Basics.pdf
+* http://www.w3.org/MarkUp/Guide/
+* http://www.html-5-tutorial.com/start-html5-tutorial.htm (слева меню по тегам)
