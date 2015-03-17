@@ -17,19 +17,15 @@ public class Main {
         //Создаём соединение
         connection = DriverManager.getConnection(url, name, password);
 
-        Statement statement = null;
-        statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+        Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                 ResultSet.CONCUR_UPDATABLE);
 
-        //statement.executeUpdate("INSERT INTO users values('kirill', to_date('19.08.1993', 'DD.MM.YYYY'))");
-
-        //Выполним запрос
-        ResultSet result = statement.executeQuery(
-                "SELECT * FROM users");
-
         Server server = new Server(8081);
-        server.setHandler(new MyHandler(result));
+        MyHandler handler = new MyHandler(statement);
+        server.setHandler(handler);
         server.start();
         server.join();
+        handler.close();
+        connection.close();
     }
 }
