@@ -26,20 +26,23 @@ public class DBConnector {
             return null;
         }
 
-        Connection conn = DriverManager.getConnection(makeUrl("birthday"), "postgres", "333");
-        Statement st = conn.createStatement();
-
-        String columns[] = new String[] { "login", "birthdate" };
-        ResultSet response = selectColumnsFromTable(st, columns, "users");
-
         ArrayList<String> rows = new ArrayList<String>();
-        while(response.next()) {
-            rows.add(response.getString(2) + ": " + response.getString(3));
-        }
 
-        response.close();
-        st.close();
-        conn.close();
+        try (Connection conn = DriverManager.getConnection(makeUrl("birthday"), "postgres", "333")) {
+            Statement st = conn.createStatement();
+
+            String columns[] = new String[] { "login", "birthdate" };
+            ResultSet response = selectColumnsFromTable(st, columns, "users");
+
+            rows = new ArrayList<String>();
+            while(response.next()) {
+                rows.add(response.getString(2) + ": " + response.getString(3));
+            }
+
+            response.close();
+            st.close();
+            conn.close();
+        }
 
         return rows;
     }
