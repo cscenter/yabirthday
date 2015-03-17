@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Main extends AbstractHandler {
 
@@ -18,12 +19,11 @@ public class Main extends AbstractHandler {
 
         DBConnector cn = new DBConnector();
         try {
-            String list[] = cn.getBirthdayList();
+            ArrayList<String> list = cn.getBirthdayList();
 
-            for(int i = 0; i != list.length; ++i) {
-                res += list[i] + "<br>";
+            for(String str : list) {
+                res += str + "<br>";
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

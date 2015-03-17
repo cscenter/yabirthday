@@ -21,7 +21,7 @@ public class DBConnector {
         }
     }
 
-    public String[] getBirthdayList() throws SQLException {
+    public ArrayList<String> getBirthdayList() throws SQLException {
         if(!valid) {
             return null;
         }
@@ -37,14 +37,11 @@ public class DBConnector {
             rows.add(response.getString(2) + ": " + response.getString(3));
         }
 
-        String res[] = new String[rows.size()];
-        rows.toArray(res);
-
         response.close();
         st.close();
         conn.close();
 
-        return res;
+        return rows;
     }
 
     private ResultSet selectColumnsFromTable(Statement st, String columns[], String table) throws SQLException {
