@@ -89,3 +89,4 @@
 * http://pdf.coreservlets.com/Servlet-Basics.pdf
 * http://www.w3.org/MarkUp/Guide/
 * http://www.html-5-tutorial.com/start-html5-tutorial.htm (слева меню по тегам)
+* http://svn.apache.org/viewvc/cxf/trunk/distribution/src/main/release/samples/ (примеры по cxf, смотреть для начала на jax_rs/basic)
