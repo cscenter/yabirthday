@@ -1,9 +1,7 @@
 package com.example;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 @Path("/")
 @Produces("text/html")
@@ -27,6 +25,16 @@ public class UserService {
                 "    <input type=\"text\" size=\"40\" name=\"id\"  value=\"\" />" +
                 "    <input type=\"submit\" value=\"GET\" />\n" +
                 "  </form>";
+        form += "<form action = \"User/\" method=\"put\">\n" +
+                "    <p><b>PUT request:\n</b>" +
+                "    <input type=\"text\" size=\"40\" name=\"id\"  value=\"\" />" +
+                "    <input type=\"submit\" value=\"PUT\" />\n" +
+                "  </form>";
+        form += "<form action = \"User/try/\" method=\"post\">\n" +
+                "    <p><b>POST request:\n</b>" +
+                "    <input type=\"text\" size=\"40\" name=\"id\"  value=\"\" />" +
+                "    <input type=\"submit\" value=\"POST\" />\n" +
+                "  </form>";
         String footer = "</body></html>";
         String answer = header + form + footer;
         return answer;
@@ -44,12 +52,103 @@ public class UserService {
             form = user.getName();
         }
         else {
-            form = "No user with this number. Try 42";
+            form = "No user with this number. Try " + user.getId();
         }
         String footer = "</body></html>";
         String answer = header + form + footer;
         return answer;
     }
+
+    @GET
+    @Path("/User/{id}/")
+    public String getUserByPath(@PathParam("id") String idFromUser) {
+        System.out.println("We are at getUser");
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "Yes, it also works. You have put there " + idFromUser;
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return answer;
+    }
+
+   /* @PUT
+    @Path("/User/")
+    public String updateUserFriends(@QueryParam("id") String friend) {
+        System.out.println("We are at updateUserFriends");
+        int id_of_friend = Integer.parseInt(friend);
+       // Response r;
+        user.friends.add(id_of_friend);
+      //  r = Response.ok().build();
+       // return r;
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "SUCCESS!!! You have put " + friend;
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return answer;
+    } */
+
+    @PUT
+    @Path("/User/")
+    public Response updateUserFriends(@QueryParam("id") String friend) {
+        System.out.println("We are at updateUserFriends");
+        int id_of_friend = Integer.parseInt(friend);
+        // Response r;
+        user.friends.add(id_of_friend);
+        //  r = Response.ok().build();
+        // return r;
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "SUCCESS!!! You have put " + friend;
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return Response.ok(answer).build();
+    }
+
+   /* @POST
+    @Path("/User/")
+    public String changeId(@QueryParam("id") String strId) {
+        System.out.println("We are at changeId");
+        int id = Integer.parseInt(strId);
+        user.setId(id);
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "SUCCESS!!! You have changed id, now it is " + user.getId();
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return answer;
+    } */
+
+  /*  @POST
+    @Path("/User/try/")
+    public Response changeId(@QueryParam("id") String strId) {
+        System.out.println("We are at changeId");
+        int id = Integer.parseInt(strId);
+        user.setId(id);
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "SUCCESS!!! You have changed id, now it is " + user.getId();
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return Response.ok(id).build();
+    } */
+
+    @POST
+    @Path("/User/try/")
+    public String changeId(@FormParam("id") String strId) {
+        System.out.println("We are at changeId");
+        //user.setId(user.getId() + 1);
+        int id = Integer.parseInt(strId);
+        user.setId(id);
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "SUCCESS!!! You have changed id, now it is " + user.getId();
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return answer;
+    }
+
+
 }
 
 
