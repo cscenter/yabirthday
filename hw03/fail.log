@@ -1,0 +1,25 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building banda 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-dependency-plugin:2.9:analyze (default-cli) @ banda >>>
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 0.677s
+[INFO] Finished at: Wed Apr 01 02:48:28 AST 2015
+[INFO] Final Memory: 10M/155M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project banda: Could not resolve dependencies for project 
+org.banda:banda:jar:1.0-SNAPSHOT: 
+Failure to find javax.transaction:jta:jar:1.0.1B in http://repo.spring.io/snapshot
+ was cached in the local repository, resolution will not be reattempted until the update interval 
+ of spring-snapshots has elapsed or updates are forced -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
