@@ -2,16 +2,23 @@ package com.example;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @Path("/")
 @Produces("text/html")
 public class UserService {
 
     User user;
+    Statement statement;
 
-    public UserService() {
+    public UserService(Statement st) {
         user = new User();
+        statement = st;
     }
+
+
 
     @GET
     @Path("/")
@@ -40,7 +47,7 @@ public class UserService {
         return answer;
     }
 
-    @GET
+  /*  @GET
     @Path("/User/")
     public String getUser(@QueryParam("id") String idFromUser) {
         System.out.println("We are at getUser");
@@ -57,7 +64,7 @@ public class UserService {
         String footer = "</body></html>";
         String answer = header + form + footer;
         return answer;
-    }
+    } */
 
     @GET
     @Path("/User/{id}/")
@@ -66,6 +73,32 @@ public class UserService {
         String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
                 " </head>\n" + " <body>\n";
         String form = "Yes, it also works. You have put there " + idFromUser;
+        String footer = "</body></html>";
+        String answer = header + form + footer;
+        return answer;
+    }
+
+    @GET
+    @Path("/User/")
+    public String getUsers(@QueryParam("id") String query) {
+        System.out.println("We are at getUsers");
+        String header =  "<html>\n" + " <head>\n" + "  <meta charset=\"utf-8\">\n" +
+                " </head>\n" + " <body>\n";
+        String form = "";
+        ResultSet toWrite;
+        try {
+            toWrite = statement.executeQuery(query); //"SELECT * FROM users"
+            form += "<table border=\"1\"><tr><th>Login</th><th>Birthday</th></tr>";
+            while (toWrite.next()) {
+                form += "<tr><td>" + toWrite.getString("login") + "</td><td>" + toWrite.getDate("birthday") + "</td></tr>";
+            }
+            form += "</table>";
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            form = "<h1>Error with reading DataBase</h1>";
+        }
+
         String footer = "</body></html>";
         String answer = header + form + footer;
         return answer;
