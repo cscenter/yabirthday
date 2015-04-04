@@ -25,6 +25,10 @@ public class Account {
         this.cash = cash;
     }
 
+    public void addToReceivers(User user) {
+        receivers.add(user);
+    }
+
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
     }

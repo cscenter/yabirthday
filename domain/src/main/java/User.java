@@ -30,6 +30,14 @@ public class User {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
+
+        user_accs.add(cash.addAccountToUser(this));
+    }
+
+    public void addToInvestors(User user) {
+        Account investor_acc = user.getAccountToDonate(this);//если кассы отличаются - провал
+        investor_acc.addToReceivers(this);
+        investors_accs.add(investor_acc);
     }
 
     public Account getAccountToDonate(User user) {

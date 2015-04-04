@@ -17,7 +17,18 @@ public class Cash {
     @JoinColumn(name="ACCOUNT_ID")
     private List<Account> accounts = new ArrayList<>();
 
+    public Cash() {}
     public Cash(User owner) {
         this.owner = owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public Account addAccountToUser(User user) {
+        Account res = new Account(user, this);
+        accounts.add(res);
+        return res;
     }
 }
