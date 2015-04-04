@@ -5,17 +5,29 @@ import java.util.Calendar;
  * Created by MAX on 23.03.2015.
  */
 public class User {
-    private Account MY_ACCOUNT;
-
     private String login;
     private Calendar birthday;
-    private ArrayList<Account> receivers;
+    private Cash cash;
 
-    public User(Account myAccount) {
-        MY_ACCOUNT = myAccount;
+    private ArrayList<Account> my_accs;
+    private ArrayList<Account> investors_accs;
+
+    private ArrayList<Gift> gifts_owned;
+
+    public User(String login, Calendar birthday, Cash cash) {
+        this.login = login;
+        this.birthday = birthday;
+        this.cash = cash;
     }
 
-    public void AddReceiver(Account receiver) {
-        receivers.add(receiver);
+    public Account getAccountToDonate(User user) {
+        Account res = null;
+        for (Account acc : my_accs) {
+            if (acc.isInCash(user.cash)) {
+                res = acc;
+            }
+        }
+
+        return res;
     }
 }
