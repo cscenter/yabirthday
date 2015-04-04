@@ -1,15 +1,24 @@
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by MAX on 29.03.2015.
  */
+@Entity
+@Table(name="GIFTS")
 public class Gift {
+    @Id @GeneratedValue @Column(name="GIFT_ID")
+    private long id;
+
     private User owner;
 
     private int price;
     private String name;
 
-    private ArrayList<Account> investors_accs;
+    @OneToMany
+    @JoinColumn(name="ACCOUNT_ID")
+    private List<Account> investors_accs = new ArrayList<>();
 
     public Gift(User owner) {
         this.owner = owner;

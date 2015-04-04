@@ -1,12 +1,19 @@
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by MAX on 24.03.2015.
  */
 public class Group {
+    @Id
     private String name;
 
-    private ArrayList<User> users;
+    @OneToMany
+    @JoinColumn(name="USER_LOGIN")
+    private List<User> users = new ArrayList<>();
 
     public Group(String name) {
         this.name = name;

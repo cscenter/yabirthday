@@ -1,18 +1,30 @@
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 /**
  * Created by MAX on 23.03.2015.
  */
+@Entity
+@Table(name="USERS")
 public class User {
+    @Id @Column(name="USER_LOGIN")
     private String login;
+
     private Calendar birthday;
     private Cash cash;
 
-    private ArrayList<Account> my_accs;
-    private ArrayList<Account> investors_accs;
+    @OneToMany
+    @JoinColumn(name="ACCOUNT_ID")
+    private List<Account> user_accs = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name="ACCOUNT_ID")
+    private List<Account> investors_accs = new ArrayList<>();
 
-    private ArrayList<Gift> gifts_owned;
+    @OneToMany
+    @JoinColumn(name="GIFT_ID")
+    private List<Gift> gifts_owned = new ArrayList<>();
 
     public User(String login, Calendar birthday, Cash cash) {
         this.login = login;
@@ -22,7 +34,7 @@ public class User {
 
     public Account getAccountToDonate(User user) {
         Account res = null;
-        for (Account acc : my_accs) {
+        for (Account acc : user_accs) {
             if (acc.isInCash(user.cash)) {
                 res = acc;
             }
