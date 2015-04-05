@@ -3,26 +3,28 @@
  */
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "birthdays")
 public class User  implements java.io.Serializable {
     @Id// (name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true) //  nullable = false
-    private long userId;
+   // @ManyToMany
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id") //  nullable = false
+    private Integer userId;
 
     @Column(name = "name")
     private String userName;
 
     @Column(name = "birthday")
-    private String userBirthday;
+    private Date userBirthday;
 
-    public void setUserId(long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
@@ -34,10 +36,10 @@ public class User  implements java.io.Serializable {
         return userName;
     }
 
-    public void setUserBirthday(String birthday) {
+    public void setUserBirthday(Date birthday) {
         this.userBirthday = birthday;
     }
-    public  String getUserBirthday() {
+    public Date  getUserBirthday() {
         return  userBirthday;
     }
 }

@@ -2,9 +2,11 @@
  * Created by Rafa on 24.03.2015.
  */
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.Instant;
+import java.util.Date;
 
 @RestController
 @EnableAutoConfiguration
@@ -34,8 +36,9 @@ public class EmbeddedJetty {
         System.out.print(session);
         //Add new Employee object
         User emp = new User();
-        emp.setUserBirthday("03.04.1990");
-        emp.setUserName("Putin");
+        Date dd = Date.from(Instant.now());
+        emp.setUserBirthday(dd);
+      //  emp.setUserName("Putin");
         emp.setUserId(42);
 
 
@@ -46,6 +49,6 @@ public class EmbeddedJetty {
         session.getTransaction().commit();
         HibernateUtil.shutdown();
 
-        SpringApplication.run(EmbeddedJetty.class, args);
+//        SpringApplication.run(EmbeddedJetty.class, args);
     }
 }
