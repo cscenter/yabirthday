@@ -18,6 +18,7 @@ public class Cash {
     private List<Account> accounts = new ArrayList<>();
 
     public Cash() {}
+    
     public Cash(User owner) {
         this.owner = owner;
     }
@@ -30,5 +31,9 @@ public class Cash {
         Account res = new Account(user, this);
         accounts.add(res);
         return res;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
     }
 }

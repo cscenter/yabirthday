@@ -18,27 +18,31 @@ public class Gift {
 
     @OneToMany
     @JoinColumn(name="ACCOUNT_ID")
-    private List<Account> investors_accs = new ArrayList<>();
+    private List<Account> investorsAccs = new ArrayList<>();
 
     public Gift(User owner) {
         this.owner = owner;
-        investors_accs = null;
+        investorsAccs = null;
     }
 
     public Gift(User owner, ArrayList<User> investors)
     {
         this.owner = owner;
-        investors_accs = new ArrayList<>();
+        investorsAccs = new ArrayList<>();
         for (User investor : investors) {
             Account acc = investor.getAccountToDonate(owner);
             if (acc != null) {
-                investors_accs.add(acc);
+                investorsAccs.add(acc);
             }
         }
     }
 
     public boolean IsSpecial()
     {
-        return investors_accs != null;
+        return investorsAccs != null;
+    }
+
+    public List<Account> getInvestorsAccs() {
+        return investorsAccs;
     }
 }

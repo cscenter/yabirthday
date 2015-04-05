@@ -32,4 +32,8 @@ public class Account {
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
     }
+
+    public List<User> getReceivers() {
+        return receivers;
+    }
 }

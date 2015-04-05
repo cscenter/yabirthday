@@ -26,4 +26,8 @@ public class Group {
     public ArrayList<User> GetUsers() {
         return new ArrayList<>(users);
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
 }
