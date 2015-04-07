@@ -20,6 +20,8 @@ public class Account {
     @JoinColumn(name="USER_LOGIN")
     private List<User> receivers = new ArrayList<>();
 
+    protected Account() { }
+
     public Account(User owner, Cash cash) {
         this.owner = owner;
         this.cash = cash;

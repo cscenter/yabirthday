@@ -27,6 +27,8 @@ public class User {
     @JoinColumn(name="GIFT_ID")
     private List<Gift> giftsOwned = new ArrayList<>();
 
+    protected User() { }
+
     public User(String login, Calendar birthday, Cash cash) {
         this.login = login;
         this.birthday = birthday;

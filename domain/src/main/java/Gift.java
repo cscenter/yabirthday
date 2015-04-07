@@ -20,6 +20,8 @@ public class Gift {
     @JoinColumn(name="ACCOUNT_ID")
     private List<Account> investorsAccs = new ArrayList<>();
 
+    protected Gift() { }
+
     public Gift(User owner) {
         this.owner = owner;
         investorsAccs = null;
