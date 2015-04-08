@@ -1,0 +1,12 @@
+
+
+<beans>
+
+    <bean id="jpaPriceDAOSupport"  class="com.madhusudhan.jsd.jpa.support.JPAPriceDAOSupport">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="TradePU" />
+    </bean>
+
+</beans>

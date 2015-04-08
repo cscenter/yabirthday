@@ -7,7 +7,7 @@ public class DataBase {
     private Connection connection = null;
     private String host = "127.0.0.1";
     private String port = "5432";
-    private String dataBaseName = "bith";
+    private String dataBaseName = "birth";
     private String userName = "postgres";
     private String password = "123";
 
