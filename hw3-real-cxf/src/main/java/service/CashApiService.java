@@ -1,7 +1,7 @@
 package service;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  * Created by olya on 05.04.15.
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 @Path("/cash/")
 @Produces("text/json") //"application/json" ?
 public class CashApiService {
-
+/*
     @GET
     @Path("/")
     public String getList() {
@@ -28,5 +28,5 @@ public class CashApiService {
     public Response addAccount(@PathParam("login") String login) {
         //что возвращать тут
     }
-
+*/
 }

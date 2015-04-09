@@ -1,8 +1,8 @@
 package domain;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ public class User {
     @Id @Column(name="USER_LOGIN")
     private String login;
 
-    private Calendar birthday;
+    private LocalDate birthday;
     private Cash cash;
 
     @OneToMany
@@ -28,7 +28,7 @@ public class User {
     @JoinColumn(name="GIFT_ID")
     private List<Gift> gifts_owned = new ArrayList<>();
 
-    public User(String login, Calendar birthday, Cash cash) {
+    public User(String login, LocalDate birthday, Cash cash) {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
@@ -49,7 +49,7 @@ public class User {
         return login;
     }
 
-    public Calendar getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 

@@ -1,27 +1,26 @@
 package service;
 
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import domain.User;
+
+import javax.ws.rs.*;
+import java.util.List;
+
 /**
  * Created by olya on 03.04.15.
  */
 
 @Path("/")
-@Produces("text/json") //"application/json" ?
+@Produces("application/json") //"text/json" ?
 public class UserApiService {
 
     @GET
     @Path("/")
-    public String getList() {
-        String result = "[";
-        for (int i = 0; i < TempDB.users.size(); ++i) {
-            result += "[" + TempDB.users.get(i).getLogin() + "," + TempDB.users.get(i).getBirthday().toString() + "]";
-        }
-        result += "]";
-        return result;
+    public List<User> getList() {
+        return TempDB.users;
     }
+
+
 
   /*  @GET
     @Path("/{login}/")

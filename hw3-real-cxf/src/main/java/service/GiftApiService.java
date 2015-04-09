@@ -1,7 +1,7 @@
 package service;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  * Created by olya on 05.04.15.
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 @Path("/gift/")
 @Produces("text/json") //"application/json" ?
 public class GiftApiService {
-
+/*
     @GET
     @Path("/")
     public String getList() {
@@ -33,5 +33,5 @@ public class GiftApiService {
     @Path("/")
     public Response addGift() {
         //что возвращать тут
-    }
+    } */
 }
