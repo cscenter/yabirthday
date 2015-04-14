@@ -11,6 +11,10 @@
         <property name="hibernate.connection.password">333</property>
         <property name="hibernate.connection.username">postgres</property>
 
+        <mapping class="User"/>
         <mapping class="Group"/>
+        <mapping class="Cash"/>
+        <mapping class="Account"/>
+        <mapping class="Gift"/>
     </session-factory>
 </hibernate-configuration>

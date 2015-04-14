@@ -6,18 +6,24 @@ import java.util.List;
  * Created by MAX on 23.03.2015.
  */
 @Entity
-@Table(name="ACCOUNTS")
+@Table(name="ACCOUNT")
 public class Account {
-    @Id @GeneratedValue @Column(name="ACCOUNT_ID")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="ID")
     private long id;
 
+    @OneToOne
+    @JoinColumn(name="OWNER")
     private User owner;
+
+    @OneToOne
+    @JoinColumn(name="CASH")
     private Cash cash;
 
+    @Column(name="FUNDS")
     private int funds;
 
     @OneToMany
-    @JoinColumn(name="USER_LOGIN")
+    @JoinColumn(name="RECEIVERS")
     private List<User> receivers = new ArrayList<>();
 
     protected Account() { }

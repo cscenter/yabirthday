@@ -1,39 +1,40 @@
-import org.eclipse.jetty.server.Request;
-import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.hibernate.Session;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Calendar;
 
 /**
  * Created by MAX on 24.03.2015.
  */
-public class Main extends AbstractHandler {
-    @Override
-    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        response.setContentType("text/html; charset=utf-8");
-        response.setStatus(HttpServletResponse.SC_OK);
-        baseRequest.setHandled(true);
-    }
-
+@RestController
+@EnableAutoConfiguration
+public class Main {
     public static void main(String[] args) throws Exception {
-        YBServer srv = new YBServer();
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
-        Cash cash = new Cash();
-        User vasya = new User("vasya", Calendar.getInstance(), cash);
-        User petya = new User("petya", Calendar.getInstance(), cash);
-        User masha = new User("masha", Calendar.getInstance(), cash);
+        try {
+            session.beginTransaction();
+            System.out.print(session);
 
-        vasya.addToInvestors(petya);
-        petya.addToInvestors(masha);
-        masha.addToInvestors(vasya);
+            Cash cash = new Cash();
 
-        org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server(8080);
-        server.setHandler(new Main());
-        server.start();
-        server.join();
+            User user = new User("userrrrr", Calendar.getInstance(), cash);
+            cash.setOwner(user);
+
+            Group group = new Group("First_group");
+            group.AddUser(user);
+
+            session.save(user);
+            session.save(cash);
+            session.save(group);
+
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            session.close();
+            HibernateUtil.shutdown();
+        }
     }
 }

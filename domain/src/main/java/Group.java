@@ -7,13 +7,13 @@ import java.util.List;
  * Created by MAX on 24.03.2015.
  */
 @Entity
-@Table(name="GROUPS")
+@Table(name="\"GROUP\"")
 public class Group implements Serializable {
-    @Id @GeneratedValue @Column(name = "NAME")
+    @Id @Column(name = "\"NAME\"")
     private String name;
 
     @OneToMany
-    @JoinColumn(name="USER_LOGIN")
+    @JoinColumn(name="\"LOGIN\"")
     private List<User> users = new ArrayList<>();
 
     protected Group() { }
