@@ -1,7 +1,4 @@
-//package 
-import java.util.ArrayList;
-import java.util.Calendar;
-
+package Service;//package
 public class UserService {
 
 }

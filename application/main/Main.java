@@ -1,6 +1,9 @@
 //package  org.banda.application.main;
-//package
+//package main;
 
+import Model.User;
+import main.HibernateUtil;
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
@@ -21,15 +24,15 @@ class Main {
     }
 
     public static void main(String[] args) throws Exception {
+        User user = new User();
 
-/*
-        org.hibernate.classic.Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+       session.beginTransaction();
         System.out.print(session);
         //Add new Employee object
         User emp = new User();
-        Date dd = Date.from(Instant.now());
-        emp.setUserBirthday(dd);
+       // Date dd = Date.from(Instant.now());
+       // emp.setUserBirthday(dd);
         //  emp.setUserName("Putin");
         emp.setUserId(42);
         session.save(emp);
