@@ -1,2 +1,2 @@
-﻿public class UserDTO {
+public class UserDTO {
 }

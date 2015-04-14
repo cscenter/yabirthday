@@ -1,10 +1,9 @@
-﻿//package  application.main;
+//package  org.banda.application.main;
+//package
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.Instant;
-import java.util.Date;
 
 @RestController
 @EnableAutoConfiguration
@@ -23,7 +22,7 @@ class Main {
 
     public static void main(String[] args) throws Exception {
 
-
+/*
         org.hibernate.classic.Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         System.out.print(session);
@@ -37,7 +36,7 @@ class Main {
 
         session.getTransaction().commit();
         HibernateUtil.shutdown();
-
+/**/
         SpringApplication.run(Main.class, args);
     }
 }

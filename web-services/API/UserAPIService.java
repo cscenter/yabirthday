@@ -1,2 +1,2 @@
-﻿public class UserAPIService {
+public class UserAPIService {
 }
