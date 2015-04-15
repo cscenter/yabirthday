@@ -1,9 +1,7 @@
 package service;
 
-import DTO.AccountDTO;
-import DTO.AdminPageDTO;
-
-import javax.ws.rs.*;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 
 /**
  * Created by olya on 15.04.15.
@@ -11,7 +9,7 @@ import javax.ws.rs.*;
 @Path("/admin/")
 @Produces("application/json")
 public class AdminPageService {
-    @GET
+  /*  @GET
     @Path("/")
     public AdminPageDTO getAdminPage() {
 
@@ -39,5 +37,5 @@ public class AdminPageService {
     @Path("/{id}/")
     public AdminPageDTO deleteGift(@PathParam("id") long id) {
 
-    }
+    } */
 }
