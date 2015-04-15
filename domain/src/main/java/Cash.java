@@ -12,7 +12,7 @@ public class Cash implements Serializable {
     private long id;
     private User owner;
 
-    @Id @Column(name="\"ID\"") @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @Column(name="\"ID\"") @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId()
     {
         return id;
@@ -23,9 +23,8 @@ public class Cash implements Serializable {
         this.id = id;
     }
 
-    /*@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "\"LOGIN\"")*/
-    @OneToOne(mappedBy = "cash" )
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "\"OWNER\"")
     public User getOwner() {
         return owner;
     }
@@ -37,8 +36,6 @@ public class Cash implements Serializable {
     /*@OneToMany
     @JoinColumn(name="\"ACCOUNTS\"")
     private List<Account> accounts = new ArrayList<>();*/
-
-    public Cash() {}
     
     public Cash(User owner) {
         this.owner = owner;

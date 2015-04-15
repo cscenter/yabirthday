@@ -17,15 +17,18 @@ public class Main {
             session.beginTransaction();
             System.out.print(session);
 
-            Cash cash = new Cash();
+            User user = new User("userrrrr", Calendar.getInstance());
+            User vasya = new User("vasya", Calendar.getInstance());
 
-            User user = new User("userrrrr", Calendar.getInstance(), cash);
-            cash.setOwner(user);
+            Cash cash = new Cash(user);
+            //user.setCash(cash);
 
             Group group = new Group("First_group");
             group.AddUser(user);
+            group.AddUser(vasya);
 
             session.save(user);
+            session.save(vasya);
             session.save(cash);
             session.save(group);
 

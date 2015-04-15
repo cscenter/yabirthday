@@ -7,14 +7,18 @@
         <property name="dialect">org.hibernate.dialect.PostgreSQL9Dialect</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
         <!-- -->
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/birthday</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/birthday_auto</property>
         <property name="hibernate.connection.password">333</property>
         <property name="hibernate.connection.username">postgres</property>
 
+        <property name="show_sql">true</property>
+        <property name="hbm2ddl.auto">update</property>
+
         <mapping class="User"/>
-        <mapping class="Group"/>
         <mapping class="Cash"/>
+        <mapping class="Group"/>
+        <!--
         <mapping class="Account"/>
-        <mapping class="Gift"/>
-    </session-factory>
-</hibernate-configuration>
+         <mapping class="Gift"/> -->
+     </session-factory>
+ </hibernate-configuration>

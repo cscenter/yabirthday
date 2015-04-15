@@ -9,12 +9,26 @@ import java.util.List;
 @Entity
 @Table(name="\"GROUP\"")
 public class Group implements Serializable {
-    @Id @Column(name = "\"NAME\"")
     private String name;
+    private List<User> users = new ArrayList<>();
+
+    @Id @Column(name = "\"NAME\"")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @OneToMany
-    @JoinColumn(name="\"LOGIN\"")
-    private List<User> users = new ArrayList<>();
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 
     protected Group() { }
 
@@ -24,13 +38,5 @@ public class Group implements Serializable {
 
     public void AddUser(User user) {
         users.add(user);
-    }
-
-    public ArrayList<User> GetUsers() {
-        return new ArrayList<>(users);
-    }
-
-    public List<User> getUsers() {
-        return users;
     }
 }

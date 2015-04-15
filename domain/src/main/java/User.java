@@ -34,17 +34,16 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    @OneToOne//(cascade = CascadeType.ALL)
-    @JoinColumn(name = "\"ID\"")
+    /*@Column(name="\"CASH\"")
     public Cash getCash() {
         return cash;
     }
 
     public void setCash(Cash cash) {
         this.cash = cash;
-    }
+    }*/
 
-    @OneToMany
+    /*@OneToMany
     @JoinColumn(name="\"ID\"")
     private List<Account> userAccs = new ArrayList<>();
 
@@ -54,7 +53,7 @@ public class User implements Serializable {
 
     @OneToMany
     @JoinColumn(name="\"ID\"")
-    private List<Gift> giftsOwned = new ArrayList<>();
+    private List<Gift> giftsOwned = new ArrayList<>();*/
 
     protected User() { }
 
@@ -62,15 +61,15 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public User(String login, Calendar birthday, Cash cash) {
+    public User(String login, Calendar birthday) {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
 
-        userAccs.add(cash.addAccountToUser(this));
+        //userAccs.add(cash.addAccountToUser(this));
     }
 
-    public void addToInvestors(User user) {
+    /*public void addToInvestors(User user) {
         Account investor_acc = user.getAccountToDonate(this);//если кассы отличаются - провал
         investor_acc.addToReceivers(this);
         investorsAccs.add(investor_acc);
@@ -87,7 +86,7 @@ public class User implements Serializable {
         return res;
     }
 
-    /*public List<Account> getUserAccs() {
+    public List<Account> getUserAccs() {
         return userAccs;
     }
 
