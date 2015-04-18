@@ -6,25 +6,54 @@ import java.util.List;
  * Created by MAX on 23.03.2015.
  */
 @Entity
-@Table(name="ACCOUNT")
+@Table(name="\"ACCOUNT\"")
 public class Account {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="ID")
     private long id;
-
-    @OneToOne
-    @JoinColumn(name="OWNER")
     private User owner;
-
-    @OneToOne
-    @JoinColumn(name="CASH")
     private Cash cash;
-
-    @Column(name="FUNDS")
     private int funds;
 
-    @OneToMany
+    @Id @Column(name="\"ID\"") @GeneratedValue(strategy = GenerationType.AUTO)
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @OneToOne
+    @JoinColumn(name="\"OWNER\"")
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    @OneToOne
+    @JoinColumn(name="\"CASH\"")
+    public Cash getCash() {
+        return cash;
+    }
+
+    public void setCash(Cash cash) {
+        this.cash = cash;
+    }
+
+    @Column(name="\"FUNDS\"")
+    public int getFunds() {
+        return funds;
+    }
+
+    public void setFunds(int funds) {
+        this.funds = funds;
+    }
+
+    /*@OneToMany
     @JoinColumn(name="RECEIVERS")
-    private List<User> receivers = new ArrayList<>();
+    private List<User> receivers = new ArrayList<>();*/
 
     protected Account() { }
 
@@ -34,14 +63,14 @@ public class Account {
     }
 
     public void addToReceivers(User user) {
-        receivers.add(user);
+        //receivers.add(user);
     }
 
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
     }
 
-    public List<User> getReceivers() {
+    /*public List<User> getReceivers() {
         return receivers;
-    }
+    }*/
 }

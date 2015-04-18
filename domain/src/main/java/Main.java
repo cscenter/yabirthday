@@ -21,7 +21,11 @@ public class Main {
             User vasya = new User("vasya", Calendar.getInstance());
 
             Cash cash = new Cash(user);
-            //user.setCash(cash);
+
+            Gift gift = new Gift(user);
+
+            Account vasya_acc = new Account(vasya, cash);
+            Account user_acc = new Account(user, cash);
 
             Group group = new Group("First_group");
             group.AddUser(user);
@@ -31,6 +35,9 @@ public class Main {
             session.save(vasya);
             session.save(cash);
             session.save(group);
+            session.save(gift);
+            session.save(vasya_acc);
+            session.save(user_acc);
 
             session.getTransaction().commit();
         } catch (Exception e) {

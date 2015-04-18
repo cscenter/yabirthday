@@ -6,26 +6,56 @@ import java.util.List;
  * Created by MAX on 29.03.2015.
  */
 @Entity
-@Table(name="GIFT")
+@Table(name="\"GIFT\"")
 public class Gift {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)// @Column(name="GIFT_ID")
     private long id;
-
-    @ManyToOne
-    @JoinColumn(name="LOGIN")
     private User owner;
-
     private int price;
     private String name;
 
-    @OneToMany
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "\"OWNER\"")
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /*@OneToMany
     @JoinColumn(name="ID")
-    private List<Account> investorsAccs = new ArrayList<>();
+    private List<Account> investorsAccs = new ArrayList<>();*/
 
     protected Gift() { }
 
     public Gift(User owner) {
-        //this.owner = owner;
+        this.owner = owner;
         //investorsAccs = null;
     }
 
@@ -44,11 +74,10 @@ public class Gift {
     public boolean IsSpecial()
     {
         //return investorsAccs != null;
-        return true;
+        return false;
     }
 
-    public List<Account> getInvestorsAccs() {
-        //return investorsAccs;
-        return null;
-    }
+    /*public List<Account> getInvestorsAccs() {
+        return investorsAccs;
+    }*/
 }

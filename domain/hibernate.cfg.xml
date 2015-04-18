@@ -17,8 +17,7 @@
         <mapping class="User"/>
         <mapping class="Cash"/>
         <mapping class="Group"/>
-        <!--
+        <mapping class="Gift"/>
         <mapping class="Account"/>
-         <mapping class="Gift"/> -->
      </session-factory>
  </hibernate-configuration>
