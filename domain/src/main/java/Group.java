@@ -12,7 +12,7 @@ public class Group implements Serializable {
     private String name;
     private List<User> users = new ArrayList<>();
 
-    @Id @Column(name = "\"NAME\"")
+    @Id
     public String getName() {
         return name;
     }

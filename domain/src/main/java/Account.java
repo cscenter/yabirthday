@@ -1,6 +1,8 @@
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -12,8 +14,9 @@ public class Account {
     private User owner;
     private Cash cash;
     private int funds;
+    private Set<User> receiver = new HashSet<>();
 
-    @Id @Column(name="\"ID\"") @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
         return id;
     }
@@ -23,7 +26,6 @@ public class Account {
     }
 
     @OneToOne
-    @JoinColumn(name="\"OWNER\"")
     public User getOwner() {
         return owner;
     }
@@ -33,7 +35,6 @@ public class Account {
     }
 
     @OneToOne
-    @JoinColumn(name="\"CASH\"")
     public Cash getCash() {
         return cash;
     }
@@ -42,7 +43,6 @@ public class Account {
         this.cash = cash;
     }
 
-    @Column(name="\"FUNDS\"")
     public int getFunds() {
         return funds;
     }
@@ -51,9 +51,14 @@ public class Account {
         this.funds = funds;
     }
 
-    /*@OneToMany
-    @JoinColumn(name="RECEIVERS")
-    private List<User> receivers = new ArrayList<>();*/
+    @OneToMany
+    public Set<User> getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(Set<User> receivers) {
+        this.receiver = receivers;
+    }
 
     protected Account() { }
 
@@ -62,15 +67,11 @@ public class Account {
         this.cash = cash;
     }
 
-    public void addToReceivers(User user) {
-        //receivers.add(user);
+    public void addReceiver(User user) {
+        receiver.add(user);
     }
 
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
     }
-
-    /*public List<User> getReceivers() {
-        return receivers;
-    }*/
 }

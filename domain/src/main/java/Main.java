@@ -17,15 +17,23 @@ public class Main {
             session.beginTransaction();
             System.out.print(session);
 
-            User user = new User("userrrrr", Calendar.getInstance());
-            User vasya = new User("vasya", Calendar.getInstance());
+            User user = new User("userrrrr");
 
             Cash cash = new Cash(user);
 
-            Gift gift = new Gift(user);
+            user.setCash(cash);
+            user.setBirthday(Calendar.getInstance());
 
-            Account vasya_acc = new Account(vasya, cash);
-            Account user_acc = new Account(user, cash);
+            User vasya = new User("vasya", cash, Calendar.getInstance());
+
+            Gift gift = new Gift(user);
+            gift.setName("book");
+            gift.setPrice(100500);
+
+            Account vasya_acc = vasya.getCash().getOrCreateUserAccount(vasya);
+            Account user_acc = user.getCash().getOrCreateUserAccount(user);
+
+            vasya.addInvestor(user);
 
             Group group = new Group("First_group");
             group.AddUser(user);

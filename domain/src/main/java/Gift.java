@@ -23,7 +23,6 @@ public class Gift {
     }
 
     @ManyToOne
-    @JoinColumn(name = "\"OWNER\"")
     public User getOwner() {
         return owner;
     }

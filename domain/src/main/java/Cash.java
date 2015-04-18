@@ -1,7 +1,6 @@
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -11,8 +10,9 @@ import java.util.List;
 public class Cash implements Serializable {
     private long id;
     private User owner;
+    private Map<User, Account> accounts = new HashMap<>();
 
-    @Id @Column(name="\"ID\"") @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId()
     {
         return id;
@@ -24,7 +24,6 @@ public class Cash implements Serializable {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "\"OWNER\"")
     public User getOwner() {
         return owner;
     }
@@ -33,21 +32,27 @@ public class Cash implements Serializable {
         this.owner = owner;
     }
 
-    /*@OneToMany
-    @JoinColumn(name="\"ACCOUNTS\"")
-    private List<Account> accounts = new ArrayList<>();*/
+    @OneToMany
+    public Map<User, Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(Map<User, Account> accounts) {
+        this.accounts = accounts;
+    }
     
     public Cash(User owner) {
         this.owner = owner;
     }
 
-    public Account addAccountToUser(User user) {
-        Account res = new Account(user, this);
-        //accounts.add(res);
+    public Account getOrCreateUserAccount(User user) {
+        Account res = accounts.get(user);
+
+        if(res == null) {
+            res = new Account(user, this);
+            accounts.put(user, res);
+        }
+
         return res;
     }
-
-    /*public List<Account> getAccounts() {
-        return accounts;
-    }*/
 }

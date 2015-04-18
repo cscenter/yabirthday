@@ -1,8 +1,6 @@
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -13,8 +11,9 @@ public class User implements Serializable {
     private String login;
     private Calendar birthday;
     private Cash cash;
+    private Set<Account> userAccs = new HashSet<>();
 
-    @Id @Column(name="\"LOGIN\"")
+    @Id
     public String getLogin()
     {
         return login;
@@ -25,7 +24,6 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    @Column(name="\"BIRTHDAY\"")
     public Calendar getBirthday() {
         return birthday;
     }
@@ -34,23 +32,25 @@ public class User implements Serializable {
         this.birthday = birthday;
     }
 
-    /*@Column(name="\"CASH\"")
+    @ManyToOne
     public Cash getCash() {
         return cash;
     }
 
     public void setCash(Cash cash) {
         this.cash = cash;
-    }*/
-
-    /*@OneToMany
-    @JoinColumn(name="\"ID\"")
-    private List<Account> userAccs = new ArrayList<>();
+    }
 
     @OneToMany
-    @JoinColumn(name="\"ID\"")
-    private List<Account> investorsAccs = new ArrayList<>();
+    public Set<Account> getUserAccs() {
+        return userAccs;
+    }
 
+    public void setUserAccs(Set<Account> userAccs) {
+        this.userAccs = userAccs;
+    }
+
+    /*
     @OneToMany
     @JoinColumn(name="\"ID\"")
     private List<Gift> giftsOwned = new ArrayList<>();*/
@@ -61,39 +61,25 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public User(String login, Calendar birthday) {
+    public User(String login, Cash cash, Calendar birthday) {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
 
-        //userAccs.add(cash.addAccountToUser(this));
+        userAccs.add(cash.getOrCreateUserAccount(this));
     }
 
-    /*public void addToInvestors(User user) {
-        Account investor_acc = user.getAccountToDonate(this);//если кассы отличаются - провал
-        investor_acc.addToReceivers(this);
-        investorsAccs.add(investor_acc);
+    public void addInvestor(User investor) {
+        Account investor_account = cash.getOrCreateUserAccount(investor);
+        investor_account.addReceiver(this);
+        investor.addAccount(investor_account);
     }
 
-    public Account getAccountToDonate(User user) {
-        Account res = null;
-        for (Account acc : userAccs) {
-            if (acc.isInCash(user.cash)) {
-                res = acc;
-            }
-        }
-
-        return res;
+    private void addAccount(Account account) {
+        userAccs.add(account);
     }
 
-    public List<Account> getUserAccs() {
-        return userAccs;
-    }
-
-    public List<Account> getInvestorsAccs() {
-        return investorsAccs;
-    }
-
+    /*
     public List<Gift> getGiftsOwned() {
         return giftsOwned;
     }*/
