@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-//@EnableAutoConfiguration
 @EnableAutoConfiguration
 public class EJet {
-    @Autowired
-    UserService userService;
+    @Autowired(required=false)
+    UserService userService ;
 
     @RequestMapping(value = "/{id}/*", method = RequestMethod.GET)
     String home3(@PathVariable(value = "id") Long id, @RequestParam(value="x", required=false, defaultValue="X3") String x) {
@@ -20,9 +19,14 @@ public class EJet {
     }
 
     @RequestMapping("/")
-    String home() {
+     String home() {
         //return this.userService.getUser("Rafa").toString();
         return "LOL";
     }
 
+    @RequestMapping("/test")
+    String test() {
+        return this.userService.getUser("Rafa").toString();
+        //return "LOL";
+    }
 }
