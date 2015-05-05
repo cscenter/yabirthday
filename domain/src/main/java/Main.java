@@ -1,5 +1,7 @@
 import org.hibernate.Session;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Calendar;
@@ -9,9 +11,10 @@ import java.util.Calendar;
  */
 @RestController
 @EnableAutoConfiguration
+//@SpringBootApplication
 public class Main {
     public static void main(String[] args) throws Exception {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
             session.beginTransaction();
@@ -53,6 +56,8 @@ public class Main {
         } finally {
             session.close();
             HibernateUtil.shutdown();
-        }
+        }*/
+
+        SpringApplication.run(EJet.class, args);
     }
 }

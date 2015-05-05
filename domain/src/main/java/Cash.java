@@ -40,6 +40,8 @@ public class Cash implements Serializable {
     public void setAccounts(Map<User, Account> accounts) {
         this.accounts = accounts;
     }
+
+    protected Cash() {}
     
     public Cash(User owner) {
         this.owner = owner;
