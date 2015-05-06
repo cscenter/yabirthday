@@ -1,36 +1,26 @@
 package com.ya.application;
 
-import com.ya.domain.*;
+import com.ya.domain.Account;
+import com.ya.domain.Cash;
+import com.ya.domain.User;
 import org.hibernate.Session;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 import java.util.Calendar;
 
-
 /**
- * Created by Max on 05.05.2015.
+ * Created by olya on 06.05.15.
  */
-
 @RestController
-@EnableAutoConfiguration
-public class EJet implements ServletContextListener {
-    //Session session;
-
-    public EJet() {
-        //session = HibernateUtil.getSessionFactory().openSession();
-    }
+public class Controller {
 
     @RequestMapping(value = "/{id}/*", method = RequestMethod.GET)
-    String home3(@PathVariable(value = "id") Long id, @RequestParam(value="x", required=false, defaultValue="X3") String x) {
+    public String home3(@PathVariable(value = "id") Long id, @RequestParam(value="x", required=false, defaultValue="X3") String x) {
         return  "id = "+ id.toString() + "<br>x= " + x;
     }
 
     @RequestMapping("/")
-    String home() {
-        //return "ololos";
+    public String home() {
 
         String result = "Error";
         Session session = HibernateUtil.getSessionFactory().openSession();
@@ -44,13 +34,12 @@ public class EJet implements ServletContextListener {
             session.close();
         }
 
-        //return result;
-        return "ololos";
-        
+        return result;
+
     }
 
     @RequestMapping("/write")
-    String write() {
+    public String write() {
         String result = "Error";
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -86,7 +75,7 @@ public class EJet implements ServletContextListener {
     }
 
     @RequestMapping("/check_write")
-    String test() {
+    public String test() {
         String result = "Error";
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -105,15 +94,5 @@ public class EJet implements ServletContextListener {
         }
 
         return result;
-    }
-
-    @Override
-    public void contextInitialized(ServletContextEvent servletContextEvent) {
-        System.out.println("*** contextInitialized");
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        System.out.println("*** contextDestroyed");
     }
 }

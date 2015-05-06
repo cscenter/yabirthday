@@ -1,4 +1,4 @@
-package com.ya.domain;
+package com.ya.application;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
@@ -16,7 +16,7 @@ public class HibernateUtil {
     }
 
     private static SessionFactory buildSessionFactory() {
-/*
+
         File directory = new File (".");
         try {
             System.out.println ("Current directory's canonical path: "
@@ -26,11 +26,11 @@ public class HibernateUtil {
         }catch(Exception e) {
             System.out.println("Exceptione is ="+e.getMessage());
         }
-*/
+
 
         try {
             // Create the SessionFactory from hibernate.cfg.xml
-            return new AnnotationConfiguration().configure(new File("domain/src/main/java/hibernate.cfg.xml")).buildSessionFactory();
+            return new AnnotationConfiguration().configure("classpath:hibernate.cfg.xml").buildSessionFactory();
         } catch (Throwable ex) {
             // Make sure you log the exception, as it might be swallowed
             System.err.println("Initial SessionFactory creation failed." + ex);
