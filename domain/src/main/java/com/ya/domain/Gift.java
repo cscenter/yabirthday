@@ -1,6 +1,7 @@
+package com.ya.domain;
+
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by MAX on 29.03.2015.

@@ -1,8 +1,14 @@
+package com.ya.application;
+
+import com.ya.domain.*;
 import org.hibernate.Session;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import java.util.Calendar;
+
 
 /**
  * Created by Max on 05.05.2015.
@@ -10,8 +16,7 @@ import java.util.Calendar;
 
 @RestController
 @EnableAutoConfiguration
-public class EJet {
-
+public class EJet implements ServletContextListener {
     //Session session;
 
     public EJet() {
@@ -25,6 +30,8 @@ public class EJet {
 
     @RequestMapping("/")
     String home() {
+        //return "ololos";
+
         String result = "Error";
         Session session = HibernateUtil.getSessionFactory().openSession();
 
@@ -37,7 +44,9 @@ public class EJet {
             session.close();
         }
 
-        return result;
+        //return result;
+        return "ololos";
+        
     }
 
     @RequestMapping("/write")
@@ -96,5 +105,15 @@ public class EJet {
         }
 
         return result;
+    }
+
+    @Override
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        System.out.println("*** contextInitialized");
+    }
+
+    @Override
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        System.out.println("*** contextDestroyed");
     }
 }

@@ -1,3 +1,5 @@
+package com.ya.domain;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
