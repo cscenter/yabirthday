@@ -2,6 +2,7 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -11,7 +12,7 @@ import java.util.*;
 @Table(name="\"USER\"")
 public class User implements Serializable {
     private String login;
-    private Calendar birthday;
+    private LocalDate birthday;
     private Cash cash;
     private Set<Account> userAccs = new HashSet<>();
 
@@ -26,11 +27,11 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public Calendar getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Calendar birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
@@ -63,7 +64,7 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public User(String login, Cash cash, Calendar birthday) {
+    public User(String login, Cash cash, LocalDate birthday) {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
