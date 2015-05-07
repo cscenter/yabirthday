@@ -12,4 +12,17 @@
     <artifactId>birthday-ws</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.ya.birthday</groupId>
+            <artifactId>birthday-domain</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 </project>
