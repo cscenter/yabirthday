@@ -1,4 +1,4 @@
-package com.ya.starter;
+package com.ya;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

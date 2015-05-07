@@ -1,0 +1,1 @@
+insert into "user"(login, birthday) values('user', '2000-01-01');

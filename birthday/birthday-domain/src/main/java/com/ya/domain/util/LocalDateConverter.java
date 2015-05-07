@@ -1,15 +1,14 @@
 package com.ya.domain.util;
 
 import javax.persistence.AttributeConverter;
+import javax.persistence.Converter;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-/**
- * Created by Max on 07.05.2015.
- */
+@Converter(autoApply = true)
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
 
     @Override
