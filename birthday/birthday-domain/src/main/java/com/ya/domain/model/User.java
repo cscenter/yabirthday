@@ -2,7 +2,6 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -102,7 +101,7 @@ public class User implements Serializable {
         transactions.add(trans);
     }
 
-    public List<User> getFriends() {
+    public List<User> makeFriends() {
         List<User> friends = new ArrayList<>();
 
         for (Account acc : userAccs) {
