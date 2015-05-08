@@ -1,5 +1,7 @@
 package com.ya.ws.dto;
 
+import com.ya.domain.model.User;
+
 import java.time.LocalDate;
 
 
@@ -13,6 +15,11 @@ public class UserDTO {
     public UserDTO(String login, LocalDate birthday) {
         this.login = login;
         this.birthday = birthday;
+    }
+
+    public UserDTO(User user) {
+        this.login = user.getLogin();
+        this.birthday = user.getBirthday();
     }
 
     protected UserDTO() {

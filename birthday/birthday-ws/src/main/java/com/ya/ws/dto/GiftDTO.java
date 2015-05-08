@@ -1,5 +1,7 @@
 package com.ya.ws.dto;
 
+import com.ya.domain.model.Gift;
+
 /**
  * Created by olya on 15.04.15.
  */
@@ -15,6 +17,14 @@ public class GiftDTO {
         this.price = price;
         this.name = name;
     }
+
+    public GiftDTO(Gift gift) {
+        this.id = gift.getId();
+        this.owner = new UserDTO(gift.getOwner());
+        this.price = gift.getPrice();
+        this.name = gift.getName();
+    }
+
 
     public long getId() {
         return  id;

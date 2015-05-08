@@ -2,14 +2,16 @@ package com.ya.ws.service;
 
 import com.ya.domain.UserService;
 import com.ya.domain.model.User;
-import com.ya.ws.dto.UserDTO;
+import com.ya.ws.dto.*;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 /**
@@ -24,15 +26,26 @@ public class UserPageService {
     @Inject
     UserService userService;
 
+
     @GET
-    @Path("/")
-    public List<UserDTO> list() {
+    @Path("/42/")
+    public UserPageDTO mainPage() {
+        return convert(userService.get("kulikov"));
+    }
+
+    @GET
+    @Path("/abc/")
+    public List<UserDTO> qwerty() {
         return userService.list()
                 .stream()
-                .map(this::convert)
+                .map(this::convert_s)
                 .collect(Collectors.toList());
     }
 
+
+
+
+/*
     @GET
     @Path("{login}")
     public UserDTO get(@PathParam("login") String login) {
@@ -87,9 +100,16 @@ public class UserPageService {
             throw new BadRequestException(e.getMessage());
         }
     }
+*/
 
-    private UserDTO convert(User user) {
+    private UserDTO convert_s(User user) {
         return new UserDTO(user.getLogin(), user.getBirthday());
+    }
+
+    private UserPageDTO convert(User user) {
+        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
+                user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
+                user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()));
     }
 }
 

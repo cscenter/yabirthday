@@ -10,6 +10,7 @@ public class UserPageDTO {
     private final CashDTO cash;
     private final List<AccountDTO> userAccs;
     private final List<GiftDTO> giftsOwned;
+   // private final List<> transactions;
 
     public UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs, List<GiftDTO> giftsOwned) {
         this.user = user;
