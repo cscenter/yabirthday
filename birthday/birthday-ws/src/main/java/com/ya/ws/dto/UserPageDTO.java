@@ -10,13 +10,17 @@ public class UserPageDTO {
     private final CashDTO cash;
     private final List<AccountDTO> userAccs;
     private final List<GiftDTO> giftsOwned;
-   // private final List<> transactions;
+    private final List<TransactionDTO> transactions;
+    private final List<UserDTO> friends;
 
-    public UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs, List<GiftDTO> giftsOwned) {
+    public UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs,
+                       List<GiftDTO> giftsOwned, List<TransactionDTO> transactions, List<UserDTO> friends) {
         this.user = user;
         this.cash = cash;
         this.userAccs = userAccs;
         this.giftsOwned = giftsOwned;
+        this.transactions = transactions;
+        this.friends = friends;
     }
 
     public UserDTO getUser() {
@@ -34,4 +38,8 @@ public class UserPageDTO {
     public List<GiftDTO> getGiftsOwned() {
         return giftsOwned;
     }
+
+    public List<TransactionDTO> getTransactions() {return transactions; }
+
+    public List<UserDTO> getFriends() {return friends; }
 }

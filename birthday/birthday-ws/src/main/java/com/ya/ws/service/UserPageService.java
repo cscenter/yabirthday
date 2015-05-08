@@ -28,9 +28,10 @@ public class UserPageService {
 
 
     @GET
-    @Path("/42/")
+    @Path("/def/")
     public UserPageDTO mainPage() {
-        return convert(userService.get("kulikov"));
+        User a = userService.get("kulikov");
+        return convert(a);
     }
 
     @GET
@@ -109,7 +110,9 @@ public class UserPageService {
     private UserPageDTO convert(User user) {
         return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
                 user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
-                user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()));
+                user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()),
+                user.getTransactions().stream().map(TransactionDTO::new).collect(Collectors.toList()),
+                user.makeFriends().stream().map(UserDTO::new).collect(Collectors.toList()));
     }
 }
 
