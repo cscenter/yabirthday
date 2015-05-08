@@ -14,7 +14,8 @@ public class User implements Serializable {
     private String login;
     private LocalDate birthday;
     private Cash cash;
-    private Set<Account> userAccs = new HashSet<>();
+    private List<Account> userAccs = new ArrayList<>();
+    private List<Gift> giftsOwned = new ArrayList<>();
 
     @Id
     public String getLogin()
@@ -45,18 +46,22 @@ public class User implements Serializable {
     }
 
     @OneToMany
-    public Set<Account> getUserAccs() {
+    public List<Account> getUserAccs() {
         return userAccs;
     }
 
-    public void setUserAccs(Set<Account> userAccs) {
+    public void setUserAccs(List<Account> userAccs) {
         this.userAccs = userAccs;
     }
 
-    /*
     @OneToMany
-    @JoinColumn(name="\"ID\"")
-    private List<Gift> giftsOwned = new ArrayList<>();*/
+    public List<Gift> getGiftsOwned() {
+        return giftsOwned;
+    }
+
+    public void setGiftsOwned(List<Gift> giftsOwned) {
+        this.giftsOwned = giftsOwned;
+    }
 
     protected User() { }
 
@@ -78,12 +83,11 @@ public class User implements Serializable {
         investor.addAccount(investor_account);
     }
 
+    public void addGift(Gift gift) {
+        giftsOwned.add(gift);
+    }
+
     private void addAccount(Account account) {
         userAccs.add(account);
     }
-
-    /*
-    public List<Gift> getGiftsOwned() {
-        return giftsOwned;
-    }*/
 }
