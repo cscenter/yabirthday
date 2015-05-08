@@ -74,4 +74,8 @@ public class Account {
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
     }
+
+    public void addFunds(int add) {
+        funds += add;
+    }
 }
