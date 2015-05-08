@@ -16,6 +16,7 @@ public class User implements Serializable {
     private Cash cash;
     private List<Account> userAccs = new ArrayList<>();
     private List<Gift> giftsOwned = new ArrayList<>();
+    private List<Transaction> transactions = new ArrayList<>();
 
     @Id
     public String getLogin()
@@ -63,6 +64,15 @@ public class User implements Serializable {
         this.giftsOwned = giftsOwned;
     }
 
+    @OneToMany
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
     protected User() { }
 
     public User(String login) {
@@ -85,6 +95,10 @@ public class User implements Serializable {
 
     public void addGift(Gift gift) {
         giftsOwned.add(gift);
+    }
+
+    public void addTransaction(Transaction trans) {
+        transactions.add(trans);
     }
 
     private void addAccount(Account account) {
