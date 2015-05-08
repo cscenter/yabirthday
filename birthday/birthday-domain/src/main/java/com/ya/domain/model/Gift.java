@@ -2,6 +2,7 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by MAX on 29.03.2015.
@@ -13,6 +14,8 @@ public class Gift {
     private User owner;
     private int price;
     private String name;
+    private boolean owned;
+    private List<Account> investorsAccs = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
@@ -48,36 +51,45 @@ public class Gift {
         this.name = name;
     }
 
-    /*@OneToMany
-    @JoinColumn(name="ID")
-    private List<Account> investorsAccs = new ArrayList<>();*/
+    public boolean isOwned() {
+        return owned;
+    }
+
+    public void setOwned(boolean owned) {
+        this.owned = owned;
+    }
+
+    @OneToMany
+    public List<Account> getInvestorsAccs() {
+        return investorsAccs;
+    }
+
+    public void setInvestorsAccs(List<Account> investorsAccs) {
+        this.investorsAccs = investorsAccs;
+    }
 
     protected Gift() { }
 
     public Gift(User owner) {
+        owned = false;
         this.owner = owner;
         //investorsAccs = null;
     }
 
-    public Gift(User owner, ArrayList<User> investors)
-    {
-        /*this.owner = owner;
-        investorsAccs = new ArrayList<>();
-        for (User investor : investors) {
-            Account acc = investor.getAccountToDonate(owner);
-            if (acc != null) {
-                investorsAccs.add(acc);
-            }
-        }*/
-    }
+    /*public Gift(User owner, ArrayList<User> investors) {
+        this.owner = owner;
+    }*/
 
-    public boolean IsSpecial()
-    {
-        //return investorsAccs != null;
+    public boolean IsSpecial() {
         return false;
     }
 
-    /*public List<Account> getInvestorsAccs() {
+    public void makeOwned() {
+        owned = true;
+        owner.addGift(this);
+    }
+
+    /*public List<com.practice.yab.Account> getInvestorsAccs() {
         return investorsAccs;
     }*/
 }
