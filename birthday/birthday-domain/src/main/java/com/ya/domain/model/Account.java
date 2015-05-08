@@ -1,8 +1,8 @@
 package com.ya.domain.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -14,7 +14,7 @@ public class Account {
     private User owner;
     private Cash cash;
     private int funds;
-    private List<User> receiver = new ArrayList<>();
+    private Set<User> receiver = new HashSet<>();
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -52,11 +52,11 @@ public class Account {
     }
 
     @OneToMany
-    public List<User> getReceiver() {
+    public Set<User> getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(List<User> receivers) {
+    public void setReceiver(Set<User> receivers) {
         this.receiver = receivers;
     }
 
