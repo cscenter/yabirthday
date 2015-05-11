@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 /**
  * Created by olya on 07.05.15.
  */
+
 @Service
 @Path("/user")
 @Produces(MediaType.APPLICATION_JSON)
@@ -34,9 +35,24 @@ public class UserPageService {
         return convert(a);
     }
 
+
+
+
+
     @GET
     @Path("/abc/")
     public List<UserDTO> qwerty() {
+        return qwer();
+       /* return userService.list()
+                .stream()
+                .map(this::convert_s)
+                .collect(Collectors.toList()); */
+    }
+
+
+    @GET
+    @Path("/geh/")
+    public List<UserDTO> qwer() {
         return userService.list()
                 .stream()
                 .map(this::convert_s)
@@ -104,15 +120,16 @@ public class UserPageService {
 */
 
     private UserDTO convert_s(User user) {
-        return new UserDTO(user.getLogin(), user.getBirthday());
+        return new UserDTO(user.getLogin(), user.getBirthday(), new GroupDTO(user.getGroup()));
     }
 
     private UserPageDTO convert(User user) {
-        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
-                user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
-                user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()),
-                user.getTransactions().stream().map(TransactionDTO::new).collect(Collectors.toList()),
-                user.makeFriends().stream().map(UserDTO::new).collect(Collectors.toList()));
+
+        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()));
+                //user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
+                //user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()),
+                //user.listTransactions().stream().map(TransactionDTO::new).collect(Collectors.toList()),
+               // user.listFriends().stream().map(UserDTO::new).collect(Collectors.toList()));
     }
 }
 

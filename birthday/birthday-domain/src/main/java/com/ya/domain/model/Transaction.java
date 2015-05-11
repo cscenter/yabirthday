@@ -42,7 +42,7 @@ public class Transaction implements Serializable {
         this.date = date;
     }
 
-    @OneToOne
+    @ManyToOne
     public Account getAccount() {
         return account;
     }
@@ -66,8 +66,6 @@ public class Transaction implements Serializable {
         this.sum = sum;
         this.date = date;
         this.account = account;
-
-        account.getOwner().addTransaction(this);
         account.addFunds(sum);
     }
 
@@ -76,8 +74,6 @@ public class Transaction implements Serializable {
         this.date = date;
         this.account = account;
         this.destination = destination;
-
-        account.getOwner().addTransaction(this);
         account.addFunds(-sum);
     }
 }

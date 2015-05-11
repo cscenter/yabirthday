@@ -1,9 +1,11 @@
 package com.ya.domain.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.*;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -14,9 +16,8 @@ public class User implements Serializable {
     private String login;
     private LocalDate birthday;
     private Cash cash;
-    private List<Account> userAccs = new ArrayList<>();
-    private List<Gift> giftsOwned = new ArrayList<>();
-    private List<Transaction> transactions = new ArrayList<>();
+    //private List<Account> userAccs = new ArrayList<>();
+    private Group group;
 
     @Id
     public String getLogin()
@@ -45,8 +46,8 @@ public class User implements Serializable {
     public void setCash(Cash cash) {
         this.cash = cash;
     }
-
-    @OneToMany
+/*
+    @OneToMany //тут тоже теперь нужен селект
     public List<Account> getUserAccs() {
         return userAccs;
     }
@@ -54,24 +55,11 @@ public class User implements Serializable {
     public void setUserAccs(List<Account> userAccs) {
         this.userAccs = userAccs;
     }
+*/
+    @ManyToOne
+    public Group getGroup() {return group;}
 
-    @OneToMany
-    public List<Gift> getGiftsOwned() {
-        return giftsOwned;
-    }
-
-    public void setGiftsOwned(List<Gift> giftsOwned) {
-        this.giftsOwned = giftsOwned;
-    }
-
-    @OneToMany
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
+    public void setGroup(Group group) {this.group = group; }
 
     protected User() { }
 
@@ -79,39 +67,51 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public User(String login, Cash cash, LocalDate birthday) {
+    public User(String login, Cash cash, LocalDate birthday, Group group) {
         this.login = login;
         this.birthday = birthday;
         this.cash = cash;
-
-        userAccs.add(cash.getOrCreateUserAccount(this));
+        this.group = group;
+        /*
+        Account a = new Account(this, cash);
+        if (!userAccs.contains(a)) {
+            userAccs.add(a);
+        } */
     }
-
+/*
     public void addInvestor(User investor) {
         Account investor_account = cash.getOrCreateUserAccount(investor);
         investor_account.addReceiver(this);
         investor.addAccount(investor_account);
     }
-
-    public void addGift(Gift gift) {
-        giftsOwned.add(gift);
-    }
-
-    public void addTransaction(Transaction trans) {
-        transactions.add(trans);
-    }
-
-    public List<User> makeFriends() {
+*/
+/*
+    public List<User> listFriends() {
+        //тут нужен селект!
+        //select user.*
+        //from user join account on account.user_id = user.user_id
+        //join account_receiver on account.id = account_receiver.from
+        //where user.user_id = current_user
         List<User> friends = new ArrayList<>();
 
         for (Account acc : userAccs) {
-            friends.addAll(acc.getReceiver());
+            friends.addAll(acc.getReceiver().stream().map(Account::getOwner).collect(Collectors.toList()));
         }
 
         return friends;
+    } */
+/*
+    public List<Transaction> listTransactions() {
+        List<Transaction> transactions = new ArrayList<>();
+        for (Account acc : userAccs) {
+            transactions.addAll(acc.getTransactions());
+        }
+        return transactions;
     }
-
+*/
+    /*
     private void addAccount(Account account) {
         userAccs.add(account);
     }
+    */
 }

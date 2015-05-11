@@ -2,8 +2,6 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by MAX on 24.03.2015.
@@ -11,10 +9,14 @@ import java.util.List;
 @Entity
 @Table(name="\"GROUP\"")
 public class Group implements Serializable {
+    private long id;
     private String name;
-    private List<User> users = new ArrayList<>();
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {return  id;}
+
+    public void setId(long id) {this.id = id;}
+
     public String getName() {
         return name;
     }
@@ -23,22 +25,10 @@ public class Group implements Serializable {
         this.name = name;
     }
 
-    @OneToMany
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
     protected Group() { }
 
-    public Group(String name) {
+    public Group(long id, String name) {
+        this.id = id;
         this.name = name;
-    }
-
-    public void AddUser(User user) {
-        users.add(user);
     }
 }

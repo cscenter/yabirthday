@@ -9,7 +9,7 @@ public class AccountDTO {
     private final long id;
     private final UserDTO owner;
     private final CashDTO cash;
-    private final int funds;
+    private final long funds;
 
     public AccountDTO(long id, UserDTO owner, CashDTO cash, int funds) {
         this.id = id;
@@ -39,7 +39,7 @@ public class AccountDTO {
         return cash;
     }
 
-    public int getFunds() {
+    public long getFunds() {
         return funds;
     }
 }

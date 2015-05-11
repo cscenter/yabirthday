@@ -13,8 +13,8 @@ public class Account {
     private long id;
     private User owner;
     private Cash cash;
-    private int funds;
-    private List<User> receiver = new ArrayList<>();
+    private long funds;
+    private List<Account> receiver = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -34,7 +34,7 @@ public class Account {
         this.owner = owner;
     }
 
-    @OneToOne
+    @ManyToOne
     public Cash getCash() {
         return cash;
     }
@@ -43,7 +43,7 @@ public class Account {
         this.cash = cash;
     }
 
-    public int getFunds() {
+    public long getFunds() {
         return funds;
     }
 
@@ -51,14 +51,25 @@ public class Account {
         this.funds = funds;
     }
 
-    @OneToMany
-    public List<User> getReceiver() {
+    @ManyToMany //таблица создается верная, но у нее нет первичных ключей. Там 2 поля, оба должны быть первичным ключом
+    public List<Account> getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(List<User> receivers) {
+    public void setReceiver(List<Account> receivers) {
         this.receiver = receivers;
     }
+/*
+    public void addTransaction(Transaction trans) {
+        transactions.add(trans);
+    } */
+
+
+/*
+    public List<Transaction> getTransactions() { //тут должен быть селект!!!
+        //select * from transaction where account_id = this.id
+        return new ArrayList<Transaction>();
+    } */
 
     protected Account() { }
 
@@ -67,8 +78,8 @@ public class Account {
         this.cash = cash;
     }
 
-    public void addReceiver(User user) {
-        receiver.add(user);
+    public void addReceiver(Account account) {
+        receiver.add(account);
     }
 
     public boolean isInCash(Cash cash) {

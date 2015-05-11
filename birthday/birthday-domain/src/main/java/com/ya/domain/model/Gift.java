@@ -15,7 +15,7 @@ public class Gift {
     private int price;
     private String name;
     private boolean owned;
-    private List<Account> investorsAccs = new ArrayList<>();
+    private List<Account> investors = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
@@ -59,13 +59,13 @@ public class Gift {
         this.owned = owned;
     }
 
-    @OneToMany
-    public List<Account> getInvestorsAccs() {
-        return investorsAccs;
+    @ManyToMany
+    public List<Account> getInvestor() {
+        return investors;
     }
 
-    public void setInvestorsAccs(List<Account> investorsAccs) {
-        this.investorsAccs = investorsAccs;
+    public void setInvestor(List<Account> investors) {
+        this.investors = investors;
     }
 
     protected Gift() { }
@@ -78,7 +78,7 @@ public class Gift {
 
     /*public Gift(User owner, ArrayList<User> investors) {
         this.owner = owner;
-    }*/
+    }
 
     public boolean IsSpecial() {
         return false;
@@ -87,7 +87,7 @@ public class Gift {
     public void makeOwned() {
         owned = true;
         owner.addGift(this);
-    }
+    } ;/
 
     /*public List<com.practice.yab.Account> getInvestorsAccs() {
         return investorsAccs;
