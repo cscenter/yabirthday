@@ -1,8 +1,6 @@
 package com.ya.domain.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by MAX on 29.03.2015.
@@ -15,7 +13,7 @@ public class Gift {
     private int price;
     private String name;
     private boolean owned;
-    private List<Account> investors = new ArrayList<>();
+    //private List<Account> investors = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
@@ -58,7 +56,7 @@ public class Gift {
     public void setOwned(boolean owned) {
         this.owned = owned;
     }
-
+/*
     @ManyToMany
     public List<Account> getInvestor() {
         return investors;
@@ -67,7 +65,7 @@ public class Gift {
     public void setInvestor(List<Account> investors) {
         this.investors = investors;
     }
-
+*/
     protected Gift() { }
 
     public Gift(User owner) {

@@ -1,8 +1,6 @@
 package com.ya.domain.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by MAX on 23.03.2015.
@@ -14,7 +12,7 @@ public class Account {
     private User owner;
     private Cash cash;
     private long funds;
-    private List<Account> receiver = new ArrayList<>();
+    //private List<Account> receiver = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -50,15 +48,21 @@ public class Account {
     public void setFunds(int funds) {
         this.funds = funds;
     }
-
+/*
     @ManyToMany //таблица создается верная, но у нее нет первичных ключей. Там 2 поля, оба должны быть первичным ключом
+    @PrimaryKeyJoinColumns({
+            @PrimaryKeyJoinColumn(name="id",
+                    referencedColumnName="account_id"),
+            @PrimaryKeyJoinColumn(name="id",
+                    referencedColumnName="receiver_id")
+    })
     public List<Account> getReceiver() {
         return receiver;
     }
 
     public void setReceiver(List<Account> receivers) {
         this.receiver = receivers;
-    }
+    } */
 /*
     public void addTransaction(Transaction trans) {
         transactions.add(trans);
@@ -78,9 +82,9 @@ public class Account {
         this.cash = cash;
     }
 
-    public void addReceiver(Account account) {
-        receiver.add(account);
-    }
+//    public void addReceiver(Account account) {
+//        receiver.add(account);
+//    }
 
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
