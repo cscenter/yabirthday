@@ -45,7 +45,7 @@ public class Account {
         return funds;
     }
 
-    public void setFunds(int funds) {
+    public void setFunds(long funds) {
         this.funds = funds;
     }
 /*

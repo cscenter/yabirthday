@@ -100,15 +100,8 @@ public class User implements Serializable {
 
         return friends;
     } */
-/*
-    public List<Transaction> listTransactions() {
-        List<Transaction> transactions = new ArrayList<>();
-        for (Account acc : userAccs) {
-            transactions.addAll(acc.getTransactions());
-        }
-        return transactions;
-    }
-*/
+
+
     /*
     private void addAccount(Account account) {
         userAccs.add(account);

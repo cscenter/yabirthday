@@ -1,6 +1,10 @@
 package com.ya.ws.service;
 
+import com.ya.domain.AccountService;
+import com.ya.domain.TransactionService;
 import com.ya.domain.UserService;
+import com.ya.domain.model.Account;
+import com.ya.domain.model.Transaction;
 import com.ya.domain.model.User;
 import com.ya.ws.dto.*;
 import org.springframework.stereotype.Service;
@@ -27,28 +31,18 @@ public class UserPageService {
     @Inject
     UserService userService;
 
+    @Inject
+    TransactionService transactionService;
+
+    @Inject
+    AccountService accountService;
 
     @GET
-    @Path("/def/")
+    @Path("/main/")
     public UserPageDTO mainPage() {
         User a = userService.get("kulikov");
         return convert(a);
     }
-
-
-
-
-
-    @GET
-    @Path("/abc/")
-    public List<UserDTO> qwerty() {
-        return qwer();
-       /* return userService.list()
-                .stream()
-                .map(this::convert_s)
-                .collect(Collectors.toList()); */
-    }
-
 
     @GET
     @Path("/geh/")
@@ -58,9 +52,27 @@ public class UserPageService {
                 .map(this::convert_s)
                 .collect(Collectors.toList());
     }
+/*
+    @GET
+    @Path("/olya/")
+    public List<AccountDTO> qwer_olya() {
+        return accountService.listFriendsAccounts("kulikova").stream().map(this::convert_account).collect(Collectors.toList());
+    } */
+
+    @GET
+    @Path("/lol/")
+    public List<TransactionDTO> superRavil() {
+        return transactionService.listAccountTransactions(2).stream().map(this::convert_transaction).collect(Collectors.toList());
+    }
 
 
+    private TransactionDTO convert_transaction(Transaction transaction) {
+        return new TransactionDTO(transaction);
+    }
 
+    private AccountDTO convert_account(Account account) {
+        return new AccountDTO(account);
+    }
 
 /*
     @GET
@@ -125,11 +137,11 @@ public class UserPageService {
 
     private UserPageDTO convert(User user) {
 
-        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()));
+        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
                 //user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
                 //user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()),
-                //user.listTransactions().stream().map(TransactionDTO::new).collect(Collectors.toList()),
-               // user.listFriends().stream().map(UserDTO::new).collect(Collectors.toList()));
+                userService.listTransactions(user.getLogin()).stream().map(TransactionDTO::new).collect(Collectors.toList()));
+                //userService.listFriends(user.getLogin()).stream().map(UserDTO::new).collect(Collectors.toList()));
     }
 }
 
