@@ -33,19 +33,19 @@ public class UserPageService {
     AccountService accountService;
     @Inject
     GiftService giftService;
-/*
+
     @GET
     @Path("{login}")
     public UserPageDTO mainPage(@PathParam("login") String login) {
         return convert_userPage(userService.get(login));
-    } */
-
+    }
+/*
     @GET
     @Path("/main/")
     public UserPageDTO mainPage() {
         return convert_userPage(userService.get("veselov"));
     }
-
+*/
 /*
     @GET
     @Path("{login}")
