@@ -1,12 +1,12 @@
 $(function() {
     $.get("/api/user/main", function(data) {
-        //UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs, List<TransactionDTO> transactions, List<UserDTO> friends, List<GiftDTO> gifts)
-        var user = data.user;
-        var cash = data.cash;
-        var accounts = data.userAccs;
-        var transactions = data.transactions;
-        var friends = data.friends;
-        var gifts = data.gifts;
+        //UserPageDTO
+        var user = data.user; //UserDTO user
+        var cash = data.cash; //CashDTO cash
+        var accounts = data.userAccs; //List<AccountDTO> userAccs
+        var transactions = data.transactions; //List<TransactionDTO> transactions
+        var friends = data.friends; //List<UserDTO> friends
+        var gifts = data.gifts; //List<GiftDTO> gifts
 
         for (var k = 0; k < friends.length; k++) {
             var friend = friends[k];
@@ -18,38 +18,33 @@ $(function() {
             );
         }
 
-        /*
-         <tr>
-         <td>MP3-плеер</td>
-         <td>02/05/015</td>
-
-         </tr>
-         <tr class="alert-danger">
-         <td><a href="#">Артем Егоров</a></td>
-         <td>02/05/2015</td>
-         </tr>
-         <tr>
-         <td><a href="#">Анастасия Быкова</a></td>
-         <td>15/05/2015</td>
-         </tr>
-         <tr>
-         <td><a href="#">Олег Сабинин</a></td>
-         <td>15/05/2015</td>
-         </tr>
-
-
-        for (var k = 0; k < user_list.length; j++) {
-            var user = user_list[k];
-            $("#user-table").find("> tbody").append(
+        for (var k = 0; k < transactions.length; k++) {
+            var transaction = transactions[k];
+            $("#transaction-table").find("> tbody").append(
                 "<tr>" +
-                "<td><a href=\"#\">" + user.login + "</a></td>" +
-                "<td>" + user.birthday + "</td>" +
+                "<td>" + transaction.date + "</td>" +
+                "<td>" + transaction.sum + " ₽" +  "</td>" +
+                "<td>" + transaction.destination.name + "</td>" +
+                "<td><a href=\"#\">" + transaction.destination.owner.login + "</a></td>" +
                 "</tr>"
             );
-        } */
+        }
 
+        for (var k = 0; k < gifts.length; k++) {
+            var gift = gifts[k];
+            $("#gift-table").find("> tbody").append(
+                "<tr>" +
+                "<td>" + gift.name + "</td>" +
+                "</tr>"
+            );
+        }
 
-       // $("#ololo").html("");
+        $("#user-name").html(user.login + "<span class=\"caret\"></span>");
+
+        var cur_cash = 0;
+        for (var k = 0; k < accounts.length; k++) {
+            cur_cash += accounts[k].funds;
+        }
+        $("#money").html("Баланс: " + cur_cash + " ₽");
     });
-	
 });

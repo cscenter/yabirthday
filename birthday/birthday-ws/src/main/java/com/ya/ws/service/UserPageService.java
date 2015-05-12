@@ -11,10 +11,7 @@ import com.ya.ws.dto.*;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.stream.Collectors;
 
@@ -36,11 +33,17 @@ public class UserPageService {
     AccountService accountService;
     @Inject
     GiftService giftService;
+/*
+    @GET
+    @Path("{login}")
+    public UserPageDTO mainPage(@PathParam("login") String login) {
+        return convert_userPage(userService.get(login));
+    } */
 
     @GET
     @Path("/main/")
     public UserPageDTO mainPage() {
-        return convert_userPage(userService.get("kulikova"));
+        return convert_userPage(userService.get("veselov"));
     }
 
 /*
@@ -55,8 +58,8 @@ public class UserPageService {
         } catch (NoSuchElementException e) {
             throw new BadRequestException(e.getMessage());
         }
-    }
-
+    } */
+/*
     @POST
     public UserDTO create(UserDTO user) {
         if (user == null) {
