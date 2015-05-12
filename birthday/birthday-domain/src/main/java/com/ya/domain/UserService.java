@@ -44,11 +44,11 @@ public class UserService {
         }
         return transactions;
     }
-/*
-    public List<Long> listFriends(String login) {
-        return userRepository.listUserFriendsAccounts();
+
+    public List<User> listUserFriends(String login) {
+        return userRepository.listUserFriends(login);
         //return userRepository.listUserFriends(a);
-    } */
+    }
 
     public User create(String login, LocalDate birthday) {
         User user = new User(login);

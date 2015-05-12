@@ -2,9 +2,6 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 
-/**
- * Created by MAX on 23.03.2015.
- */
 @Entity
 @Table(name="\"ACCOUNT\"")
 public class Account {

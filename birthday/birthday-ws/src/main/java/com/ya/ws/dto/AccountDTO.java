@@ -25,8 +25,6 @@ public class AccountDTO {
         this.funds = account.getFunds();
     }
 
-
-
     public long getId() {
         return id;
     }

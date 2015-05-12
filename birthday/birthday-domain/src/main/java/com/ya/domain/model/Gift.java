@@ -2,9 +2,7 @@ package com.ya.domain.model;
 
 import javax.persistence.*;
 
-/**
- * Created by MAX on 29.03.2015.
- */
+
 @Entity
 @Table(name="\"GIFT\"")
 public class Gift {

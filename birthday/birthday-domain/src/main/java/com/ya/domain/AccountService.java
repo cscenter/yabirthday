@@ -24,8 +24,8 @@ public class AccountService {
 /*
     public List<Account> listFriendsAccounts(String login) {
         return accountRepository.listFriendsAccounts(login);
-    }*/
-/*
+    }
+
     public List<Account> listFriendsAccounts(String login) {
         return accountRepository.listFriendsAccounts();
     } */

@@ -3,9 +3,6 @@ package com.ya.domain.model;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by MAX on 24.03.2015.
- */
 @Entity
 @Table(name="\"GROUP\"")
 public class Group implements Serializable {

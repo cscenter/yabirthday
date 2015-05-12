@@ -4,9 +4,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- * Created by MAX on 08.05.2015.
- */
 @Entity
 @Table(name="\"TRANSACTION\"")
 public class Transaction implements Serializable {

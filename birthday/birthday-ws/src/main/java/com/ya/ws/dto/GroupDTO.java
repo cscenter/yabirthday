@@ -18,28 +18,7 @@ public class GroupDTO {
         this.name = group.getName();
     }
 
-    public long getId() {
-        return id;
-    }
+    public long getId() {return id;}
 
-    public String getName() {
-        return name;
-    }
-
-/*
-
-private final List<UserDTO> users;
-    public GroupDTO(String name, List<UserDTO> users) {
-        this.name = name;
-        this.users = users;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<UserDTO> getUsers() {
-        return users;
-    }
-    */
+    public String getName() {return name;}
 }

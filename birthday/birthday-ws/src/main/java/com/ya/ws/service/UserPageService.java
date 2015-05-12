@@ -1,6 +1,7 @@
 package com.ya.ws.service;
 
 import com.ya.domain.AccountService;
+import com.ya.domain.GiftService;
 import com.ya.domain.TransactionService;
 import com.ya.domain.UserService;
 import com.ya.domain.model.Account;
@@ -15,7 +16,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -30,48 +30,17 @@ public class UserPageService {
 
     @Inject
     UserService userService;
-
     @Inject
     TransactionService transactionService;
-
     @Inject
     AccountService accountService;
+    @Inject
+    GiftService giftService;
 
     @GET
     @Path("/main/")
     public UserPageDTO mainPage() {
-        User a = userService.get("kulikov");
-        return convert(a);
-    }
-
-    @GET
-    @Path("/geh/")
-    public List<UserDTO> qwer() {
-        return userService.list()
-                .stream()
-                .map(this::convert_s)
-                .collect(Collectors.toList());
-    }
-/*
-    @GET
-    @Path("/olya/")
-    public List<AccountDTO> qwer_olya() {
-        return accountService.listFriendsAccounts("kulikova").stream().map(this::convert_account).collect(Collectors.toList());
-    } */
-
-    @GET
-    @Path("/lol/")
-    public List<TransactionDTO> superRavil() {
-        return transactionService.listAccountTransactions(2).stream().map(this::convert_transaction).collect(Collectors.toList());
-    }
-
-
-    private TransactionDTO convert_transaction(Transaction transaction) {
-        return new TransactionDTO(transaction);
-    }
-
-    private AccountDTO convert_account(Account account) {
-        return new AccountDTO(account);
+        return convert_userPage(userService.get("kulikova"));
     }
 
 /*
@@ -131,17 +100,23 @@ public class UserPageService {
     }
 */
 
-    private UserDTO convert_s(User user) {
+    private UserDTO convert_user(User user) {
         return new UserDTO(user.getLogin(), user.getBirthday(), new GroupDTO(user.getGroup()));
     }
 
-    private UserPageDTO convert(User user) {
+    private TransactionDTO convert_transaction(Transaction transaction) {
+        return new TransactionDTO(transaction);
+    }
 
+    private AccountDTO convert_account(Account account) {
+        return new AccountDTO(account);
+    }
+
+    private UserPageDTO convert_userPage(User user) {
         return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
-                //user.getUserAccs().stream().map(AccountDTO::new).collect(Collectors.toList()),
-                //user.getGiftsOwned().stream().map(GiftDTO::new).collect(Collectors.toList()),
-                userService.listTransactions(user.getLogin()).stream().map(TransactionDTO::new).collect(Collectors.toList()));
-                //userService.listFriends(user.getLogin()).stream().map(UserDTO::new).collect(Collectors.toList()));
+                accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList()),
+                userService.listTransactions(user.getLogin()).stream().map(TransactionDTO::new).collect(Collectors.toList()),
+                userService.listUserFriends(user.getLogin()).stream().map(UserDTO::new).collect(Collectors.toList()),
+                giftService.listUserGifts(user.getLogin()).stream().map(GiftDTO::new).collect(Collectors.toList()));
     }
 }
-
