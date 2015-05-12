@@ -1,17 +1,19 @@
 $(function() {
-    $.get("/api/user", function(data) {
-        //UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs, List<GiftDTO> giftsOwned) {
+    $.get("/api/user/main", function(data) {
+        //UserPageDTO(UserDTO user, CashDTO cash, List<AccountDTO> userAccs, List<TransactionDTO> transactions, List<UserDTO> friends, List<GiftDTO> gifts)
         var user = data.user;
         var cash = data.cash;
-        var acc_list = data.userAccs;
-        var gift_list = data.giftsOwned;
+        var accounts = data.userAccs;
+        var transactions = data.transactions;
+        var friends = data.friends;
+        var gifts = data.gifts;
 
-        for (var k = 0; k < gift_list.length; k++) {
-            var gift = gift_list[k];
-            $("#gift-table").find("> tbody").append(
+        for (var k = 0; k < friends.length; k++) {
+            var friend = friends[k];
+            $("#friend-table").find("> tbody").append(
                 "<tr>" +
-                "<td><a href=\"#\">" + gift.name + "</a></td>" +
-                "<td>" + "мы лохи" + "</td>" +
+                "<td><a href=\"#\">" + friend.login + "</a></td>" +
+                "<td>" + friend.birthday + "</td>" +
                 "</tr>"
             );
         }
@@ -20,8 +22,20 @@ $(function() {
          <tr>
          <td>MP3-плеер</td>
          <td>02/05/015</td>
-         </tr>
 
+         </tr>
+         <tr class="alert-danger">
+         <td><a href="#">Артем Егоров</a></td>
+         <td>02/05/2015</td>
+         </tr>
+         <tr>
+         <td><a href="#">Анастасия Быкова</a></td>
+         <td>15/05/2015</td>
+         </tr>
+         <tr>
+         <td><a href="#">Олег Сабинин</a></td>
+         <td>15/05/2015</td>
+         </tr>
 
 
         for (var k = 0; k < user_list.length; j++) {

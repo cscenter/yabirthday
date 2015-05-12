@@ -25,7 +25,6 @@ public class GiftDTO {
         this.name = gift.getName();
     }
 
-
     public long getId() {
         return  id;
     }

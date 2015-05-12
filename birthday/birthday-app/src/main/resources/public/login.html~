@@ -18,7 +18,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/birthday.js"></script>
 </head>
 
 <body>
@@ -56,7 +55,7 @@
             <ul class="navbar-right nav navbar-nav">
                 <li><p class="navbar-text nav-tabs"> </p></li> <!-- Баланс: 100500 ₽ !--->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"></a> <!--Артем Егоров <span class="caret"></span> !-->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="users.html">Все пользователи</a></li><!-- Баланс: 100500 ₽ !--->
                         <li><a href="#">Настройки</a></li>
@@ -71,10 +70,10 @@
 <!-- Page Content -->
 <div class="container" id="loghide">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-4">
             <div class="panel panel-default">
                 <div class="panel-heading">Дни рождения</div>
-                <table id="friend-table" class="table text-center" style="text-align: center">
+                <table class="table text-center" style="text-align: center">
                     <thead >
                     <tr>
                         <th style="text-align: center">Пользователь</th>
@@ -82,12 +81,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- here is js power! -->
+                    <tr class="alert-danger">
+                        <td><a href="#">Артем Егоров</a></td>
+                        <td>02/05/2015</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Анастасия Быкова</a></td>
+                        <td>15/05/2015</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#">Олег Сабинин</a></td>
+                        <td>15/05/2015</td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-lg-4">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">Мои транзакции</div>
@@ -96,56 +106,52 @@
                 <table class="table text-center" style="text-align: center">
                     <thead >
                     <tr>
-                        <th style="text-align: center">Дата</th>
+                        <th style="text-align: center">Время</th>
                         <th style="text-align: center">Сумма</th>
-                        <th style="text-align: center">Подарок</th>
-                        <th style="text-align: center">Получатель</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr class="alert-success">
                         <td>22.04.2015</td>
                         <td>+120 ₽</td>
-                        <td></td>
-                        <td>Я</td>
                     </tr>
                     <tr class="alert-warning">
                         <td>22.04.2015</td>
                         <td>-300 ₽</td>
-                        <td>носки</td>
-                        <td>Сергей</td>
                     </tr>
                     <tr class="alert-warning">
                         <td>23.04.2015</td>
                         <td>-100 ₽</td>
-                        <td>картина</td>
-                        <td>Женя</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-lg-4">
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Мои подарки</div>
+                <div class="panel-heading">Мой список подарков</div>
 
                 <!-- Table -->
                 <table class="table text-center" style="text-align: center">
                     <thead>
                     <tr>
-                        <th style="text-align: center">Название</th>
+                        <th style="text-align: center">Подарок</th>
+                        <th style="text-align: center">Дата</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>MP3-плеер</td>
+                        <td>02/05/015</td>
                     </tr>
                     <tr>
                         <td>Подарок-путешествие</td>
+                        <td>02/05/2014</td>
                     </tr>
                     <tr>
                         <td>Клавиатура Logitech</td>
+                        <td>23/02/2014</td>
                     </tr>
                     </tbody>
                 </table>

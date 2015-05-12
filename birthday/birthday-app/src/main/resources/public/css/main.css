@@ -15,3 +15,19 @@ body {
 footer {
     margin: 50px 0;
 }
+.modal {
+    text-align: center;
+}
+
+.modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 40%;
+}
+
+.modal-dialog {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
