@@ -31,8 +31,9 @@ $(function() {
                     "<div class=\"media\">" +
                     "<div class=\"media-body\">" +
                     "<h4 class=\"media-heading\">" + user.login + "</h4>" +
-                    "<h6 class=\"label media-heading label-info\">" + user.group.name + "</h6>" +
-                    "<h6 class=\"label media-heading label-info\">" + user.birthday + "</h6><br>" +
+                    "<h6 class=\"label media-heading label-info\">" + user.group.name + "</h6> " +
+                    "<h6 class=\"label media-heading label-info\">" + user.birthday + "</h6>" +
+                    "<div class=\"divider\"></div>" +
                     "</div></div></div></div></div>");
             }
         });
