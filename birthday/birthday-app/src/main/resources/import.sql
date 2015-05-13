@@ -76,6 +76,7 @@ insert into "account"(id , funds, cash_id, owner_login) values('11', '1000', '42
 insert into "account"(id , funds, cash_id, owner_login) values('12', '500',  '42', 'telezhnaya' );
 insert into "account"(id , funds, cash_id, owner_login) values('13', '4000', '42', 'kulikov' );
 
+insert into "account"(id , funds, cash_id, owner_login) values('14', '1500',  '12', 'telezhnaya' );
 
 ----------------
 insert into "gift_investor"(gift_id, account_id) values('2', '3'); -- Миша дарит дисер
