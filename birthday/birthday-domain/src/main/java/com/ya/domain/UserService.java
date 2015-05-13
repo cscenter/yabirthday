@@ -36,6 +36,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public List<User> listPart(String part) {
+        return userRepository.listPartUsers(part);
+    }
+
     public List<Transaction> listTransactions(String login) {
         List<Transaction> transactions = new ArrayList<>();
         List<Account> accounts = accountRepository.listUserAccounts(login);

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -39,13 +40,19 @@ public class UserPageService {
     public UserPageDTO mainPage(@PathParam("login") String login) {
         return convert_userPage(userService.get(login));
     }
-/*
+
     @GET
-    @Path("/main/")
-    public UserPageDTO mainPage() {
-        return convert_userPage(userService.get("veselov"));
+    @Path("/users/")
+    public List<UserDTO> listUsers() {
+        return userService.list().stream().map(this::convert_user).collect(Collectors.toList());
     }
-*/
+
+    @GET
+    @Path("/search/{part}")
+    public List<UserDTO> listPartUsers(@PathParam("part") String part) {
+        return userService.listPart(part).stream().map(this::convert_user).collect(Collectors.toList());
+    }
+
 /*
     @GET
     @Path("{login}")
