@@ -19,6 +19,7 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/all_users.js"></script>
+    <script src="js/cookiesLib.js"></script>
 </head>
 
 <body>
@@ -31,18 +32,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>rrr
+            </button>
             <div class="navbar-brand"><a href="index.html" class="navbar-link"><span style="color:red">Я</span>ндекс.Подарки</a></div>
         </div>
         <div id="navbar" class="navbar-collapse bs-navbar-collapse collapse in">
             <ul class="navbar-right nav navbar-nav">
-                <li><p class="navbar-text nav-tabs"> Баланс: 100500 ₽</p></li>
+                <li><p id="money" class="navbar-text nav-tabs"> </p></li> <!--Баланс: 100500 ₽-->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true">Артем Егоров <span class="caret"></span></a>
+                    <a id="user-name" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"></a> <!--Артем Егоров <span class="caret"></span>-->
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="users.html">Все пользователи</a></li>
                         <li><a href="#">Настройки</a></li>
-                        <li><a href="#">Выход</a></li>
+                        <li><a onclick="deleteCookieAll()" href="index.html">Выход</a></li>
                     </ul>
                 </li>
             </ul>

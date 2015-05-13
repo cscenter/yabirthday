@@ -19,15 +19,6 @@ public class AccountService {
     AccountRepository accountRepository;
 
     public List<Account> listUserAccounts(String login) {
-        return accountRepository.listUserAccounts(login);
+        return accountRepository.findByOwner_login(login);
     }
-/*
-    public List<Account> listFriendsAccounts(String login) {
-        return accountRepository.listFriendsAccounts(login);
-    }
-
-    public List<Account> listFriendsAccounts(String login) {
-        return accountRepository.listFriendsAccounts();
-    } */
-
 }

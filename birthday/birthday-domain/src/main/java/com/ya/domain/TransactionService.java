@@ -8,9 +8,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
-/**
- * Created by Rafa on 11.05.2015.
- */
 @Service
 @Transactional
 public class TransactionService {
@@ -18,7 +15,7 @@ public class TransactionService {
     TransactionRepository transactionRepository;
 
     public List<Transaction> listAccountTransactions(long id) {
-        return transactionRepository.listAccountTransactions(id);
+        return transactionRepository.findByAccount_id(id);
     }
 
 }

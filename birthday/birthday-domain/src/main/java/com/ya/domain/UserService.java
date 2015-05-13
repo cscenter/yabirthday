@@ -15,9 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-/**
- * Created by Max on 07.05.2015.
- */
 
 @Service
 @Transactional
@@ -37,21 +34,20 @@ public class UserService {
     }
 
     public List<User> listPart(String part) {
-        return userRepository.listPartUsers(part);
+        return userRepository.findByLoginContainingIgnoreCase(part);
     }
 
     public List<Transaction> listTransactions(String login) {
         List<Transaction> transactions = new ArrayList<>();
-        List<Account> accounts = accountRepository.listUserAccounts(login);
+        List<Account> accounts = accountRepository.findByOwner_login(login);
         for (Account acc : accounts) {
-            transactions.addAll(transactionRepository.listAccountTransactions(acc.getId()));
+            transactions.addAll(transactionRepository.findByAccount_id(acc.getId()));
         }
         return transactions;
     }
 
     public List<User> listUserFriends(String login) {
         return userRepository.listUserFriends(login);
-        //return userRepository.listUserFriends(a);
     }
 
     public User create(String login, LocalDate birthday) {

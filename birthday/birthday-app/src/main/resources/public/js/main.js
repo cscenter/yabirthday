@@ -1,30 +1,50 @@
-$('document').ready(function() {
-    $('#loghide').hide();
-    $("#myModal").modal('show');
-    $("input").keypress(function(event) {
-        if (event.which == 13) {
-            event.preventDefault();
-            //$("form").submit();
+const uName = "userName";
+const uMoney = "userBalance";
 
-			if ($('input').val() == 'Hello') {
-                $("#myModal").modal('hide');
-                $('#loghide').show();
-            }
-            else {
-                alert('Wrong!');
-            }
-        }
-    });
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : null;
+}
+
+function setCookie(key,val) {
+    document.cookie = key+ "=" + val;
+}
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function deleteCookieAll() {
+    //var name = uName;
+    //alert("lol");
+    //document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    deleteCookie(uName);
+    deleteCookie(uMoney);
+}
+
+$('document').ready(function() {
+
+    if(getCookie(uName) == null) {
+        //alert("cook == null");
+        $('#loghide').hide();
+        $("#myModal").modal('show');
+    } else {
+        //alert("cook != null");
+        loadAll(getCookie(uName));
+    }
 
     function loadAll(login) {
+
         $.get("/api/user/" + login, function(data) {
             //UserPageDTO
             var user = data.user; //UserDTO user
-            var cash = data.cash; //CashDTO cash
-            var accounts = data.userAccs; //List<AccountDTO> userAccs
+            //var cash = data.cash; //CashDTO cash
+            //var accounts = data.userAccs; //List<AccountDTO> userAccs
             var transactions = data.transactions; //List<TransactionDTO> transactions
             var friends = data.friends; //List<UserDTO> friends
             var gifts = data.gifts; //List<GiftDTO> gifts
+            var user_money = data.money;
 
             for (var k = 0; k < friends.length; k++) {
                 var friend = friends[k];
@@ -58,12 +78,8 @@ $('document').ready(function() {
             }
 
             $("#user-name").html(user.login + "<span class=\"caret\"></span>");
-
-            var cur_cash = 0;
-            for (var k = 0; k < accounts.length; k++) {
-                cur_cash += accounts[k].funds;
-            }
-            $("#money").html("Баланс: " + cur_cash + " ₽");
+            $("#money").html("Баланс: " + user_money + " ₽");
+            setCookie(uMoney, user_money);
         });
     }
 
@@ -98,6 +114,7 @@ $('document').ready(function() {
         if (ans != null) {
             $("#myModal").modal('hide');
             $('#loghide').show();
+            setCookie(uName, login);
             loadAll(login);
         }
         else {

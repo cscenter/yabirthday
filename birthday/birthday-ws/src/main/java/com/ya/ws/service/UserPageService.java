@@ -4,8 +4,6 @@ import com.ya.domain.AccountService;
 import com.ya.domain.GiftService;
 import com.ya.domain.TransactionService;
 import com.ya.domain.UserService;
-import com.ya.domain.model.Account;
-import com.ya.domain.model.Transaction;
 import com.ya.domain.model.User;
 import com.ya.ws.dto.*;
 import org.springframework.stereotype.Service;
@@ -36,7 +34,7 @@ public class UserPageService {
     GiftService giftService;
 
     @GET
-    @Path("{login}")
+    @Path("/{login}")
     public UserPageDTO mainPage(@PathParam("login") String login) {
         return convert_userPage(userService.get(login));
     }
@@ -44,14 +42,15 @@ public class UserPageService {
     @GET
     @Path("/users/")
     public List<UserDTO> listUsers() {
-        return userService.list().stream().map(this::convert_user).collect(Collectors.toList());
+        return userService.list().stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
     @GET
     @Path("/search/{part}")
     public List<UserDTO> listPartUsers(@PathParam("part") String part) {
-        return userService.listPart(part).stream().map(this::convert_user).collect(Collectors.toList());
+        return userService.listPart(part).stream().map(UserDTO::new).collect(Collectors.toList());
     }
+
 
 /*
     @GET
@@ -110,23 +109,21 @@ public class UserPageService {
     }
 */
 
-    private UserDTO convert_user(User user) {
-        return new UserDTO(user.getLogin(), user.getBirthday(), new GroupDTO(user.getGroup()));
-    }
-
-    private TransactionDTO convert_transaction(Transaction transaction) {
-        return new TransactionDTO(transaction);
-    }
-
-    private AccountDTO convert_account(Account account) {
-        return new AccountDTO(account);
+    private long howMuchMoney(User user) {
+        List<AccountDTO> accounts = accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList());
+        long funds = 0;
+        for(int i = 0; i < accounts.size(); i++) {
+            funds += accounts.get(i).getFunds();
+        }
+        return funds;
     }
 
     private UserPageDTO convert_userPage(User user) {
-        return new UserPageDTO(new UserDTO(user), new CashDTO(user.getCash()),
-                accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList()),
+        return new UserPageDTO(new UserDTO(user), //new CashDTO(user.getCash()),
+             //   accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList()),
                 userService.listTransactions(user.getLogin()).stream().map(TransactionDTO::new).collect(Collectors.toList()),
                 userService.listUserFriends(user.getLogin()).stream().map(UserDTO::new).collect(Collectors.toList()),
-                giftService.listUserGifts(user.getLogin()).stream().map(GiftDTO::new).collect(Collectors.toList()));
+                giftService.listUserGifts(user.getLogin()).stream().map(GiftDTO::new).collect(Collectors.toList()),
+                howMuchMoney(user));
     }
 }

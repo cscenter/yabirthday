@@ -19,6 +19,6 @@ public class GiftService {
     GiftRepository giftRepository;
 
     public List<Gift> listUserGifts(String login) {
-        return giftRepository.listUserGifts(login);
+        return giftRepository.findByOwner_login(login);
     }
 }
