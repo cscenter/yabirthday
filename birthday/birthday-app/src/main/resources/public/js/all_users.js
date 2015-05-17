@@ -25,16 +25,16 @@ $(function() {
             for (var k = 0; k < data.length; k++) {
                 var user = data[k];
                 $("#users-views").append(
-                    "<div class=\"col-md-4\">" +
+                    "<div class=\"col-md-3\">" +
                     "<div class=\"panel panel-default\">" +
-                    "<div class=\"panel-body\">" +
-                    "<div class=\"media\">" +
-                    "<div class=\"media-body\">" +
-                    "<h4 class=\"media-heading\">" + user.login + "</h4>" +
-                    "<h6 class=\"label media-heading label-info\">" + user.group.name + "</h6> " +
-                    "<h6 class=\"label media-heading label-info\">" + user.birthday + "</h6>" +
-                    "<div class=\"divider\"></div>" +
-                    "</div></div></div></div></div>");
+                    "<div class=\"panel-heading\">" +
+                    "<div class=\"pull-right btn-group btn-group-xs\" role=\"group\">" +
+                    "<button type=\"button\" class=\"btn btn-success\"><span class=\"glyphicon glyphicon-plus\"></span></button>" +
+                    "</div><div class=\"panel-title\">" + user.login + "</div>" +
+                    "</div><div class=\"panel-body\">" +
+                    "<h6 class=\"label label-info\">" + user.group.name + "</h6> " +
+                    "<h6 class=\"label label-info\">" + user.birthday + "</h6>" +
+                    "</div></div></div>");
             }
         });
     }

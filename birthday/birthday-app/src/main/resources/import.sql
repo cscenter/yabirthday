@@ -60,6 +60,7 @@ insert into "gift"(id , name, owned, price, owner_login) values('7', 'shower',  
 insert into "gift"(id , name, owned, price, owner_login) values('8', 'bicycle',       'false', '15000',  'lebedeva' );
 
 
+
 ----------------
 insert into "account"(id , funds, cash_id, owner_login) values('1',  '4000', '42', 'kulikova' );
 
@@ -78,42 +79,6 @@ insert into "account"(id , funds, cash_id, owner_login) values('12', '500',  '42
 insert into "account"(id , funds, cash_id, owner_login) values('13', '4000', '42', 'kulikov' );
 
 insert into "account"(id , funds, cash_id, owner_login) values('14', '1500',  '12', 'telezhnaya' );
-
-----------------
-insert into "gift_investor"(gift_id, account_id) values('2', '3'); -- Миша дарит дисер
-insert into "gift_investor"(gift_id, account_id) values('2', '5'); -- Ваня дарит дисер
-insert into "gift_investor"(gift_id, account_id) values('2', '2'); -- Катя дарит дисер
-
-insert into "gift_investor"(gift_id, account_id) values('8', '3'); -- Миша дарит велик
-insert into "gift_investor"(gift_id, account_id) values('8', '4'); -- Кноп дарит велик
-insert into "gift_investor"(gift_id, account_id) values('8', '5'); -- Ваня дарит велик
-
-insert into "gift_investor"(gift_id, account_id) values('7', '12'); -- Оля дарит шампунь
-
-insert into "gift_investor"(gift_id, account_id) values('1', '12'); -- Оля дарит книгу
-insert into "gift_investor"(gift_id, account_id) values('1', '11'); -- Миша дарит книгу
-insert into "gift_investor"(gift_id, account_id) values('1',  '9'); -- Арсен дарит книгу
-insert into "gift_investor"(gift_id, account_id) values('1',  '1'); -- Женя дарит книгу
-insert into "gift_investor"(gift_id, account_id) values('1',  '8'); -- Сергей дарит книгу
-
-
-
-----------------
-insert into "transaction"(id, date, sum, account_id, destination_id) values('1',  '2000-04-12', '4000', '3',  '6'); -- Миша скинулся на дисер Сереге
-insert into "transaction"(id, date, sum, account_id, destination_id) values('2',  '2000-04-13', '4000', '5',  '6'); -- Ваня скинулся на дисер Сереге
-insert into "transaction"(id, date, sum, account_id, destination_id) values('3',  '2000-04-15', '2000', '2',  '6'); -- Катя скинулась на дисер Сереге
-
-insert into "transaction"(id, date, sum, account_id, destination_id) values('4',  '2000-05-08', '5000', '3',  '2'); -- Миша скинулся на велик Кате
-insert into "transaction"(id, date, sum, account_id, destination_id) values('5',  '2000-05-02', '5000', '4',  '2'); -- Кноп скинулся на велик Кате
-insert into "transaction"(id, date, sum, account_id, destination_id) values('6',  '2000-05-10', '5000', '5',  '2'); -- Ваня скинулся на велик Кате
-
-insert into "transaction"(id, date, sum, account_id, destination_id) values('7',  '2000-05-28', '120',  '12', '7'); -- Оля скинулась на шампунь Юле
-
-insert into "transaction"(id, date, sum, account_id, destination_id) values('8',  '2000-05-11', '300',  '8',  '13'); -- Сергей скинулся на книгу Саше
-insert into "transaction"(id, date, sum, account_id, destination_id) values('9',  '2000-05-14', '300',  '12', '13'); -- Оля скинулась на книгу Саше
-insert into "transaction"(id, date, sum, account_id, destination_id) values('10', '2000-05-12', '300',  '11', '13'); -- Миша скинулся на книгу Саше
-insert into "transaction"(id, date, sum, account_id, destination_id) values('11', '2000-05-13', '300',  '9',  '13'); -- Арсен скинулся на книгу Саше
-insert into "transaction"(id, date, sum, account_id, destination_id) values('12', '2000-05-14', '300',  '1',  '13'); -- Женя скинулась на книгу Саше
 
 ----------------
 insert into "account_receiver"(account_id, receiver_id) values( '3',   '6');  --- Миша может дарить Сереге
@@ -137,3 +102,37 @@ insert into "account_receiver"(account_id, receiver_id) values( '11',  '13'); --
 insert into "account_receiver"(account_id, receiver_id) values( '9',   '13'); --- Арсен может дарить Саше
 insert into "account_receiver"(account_id, receiver_id) values( '1',   '13'); --- Женя может дарить Саше
 insert into "account_receiver"(account_id, receiver_id) values( '8',   '13'); --- Сергей может дарить Саше
+
+----------------
+insert into "gift_investor"(gift_id, investor_id) values('2', '3'); -- Миша дарит дисер
+insert into "gift_investor"(gift_id, investor_id) values('2', '5'); -- Ваня дарит дисер
+insert into "gift_investor"(gift_id, investor_id) values('2', '2'); -- Катя дарит дисер
+
+insert into "gift_investor"(gift_id, investor_id) values('8', '3'); -- Миша дарит велик
+insert into "gift_investor"(gift_id, investor_id) values('8', '4'); -- Кноп дарит велик
+insert into "gift_investor"(gift_id, investor_id) values('8', '5'); -- Ваня дарит велик
+
+insert into "gift_investor"(gift_id, investor_id) values('7', '12'); -- Оля дарит шампунь
+
+insert into "gift_investor"(gift_id, investor_id) values('1', '12'); -- Оля дарит книгу
+insert into "gift_investor"(gift_id, investor_id) values('1', '11'); -- Миша дарит книгу
+insert into "gift_investor"(gift_id, investor_id) values('1',  '9'); -- Арсен дарит книгу
+insert into "gift_investor"(gift_id, investor_id) values('1',  '1'); -- Женя дарит книгу
+insert into "gift_investor"(gift_id, investor_id) values('1',  '8'); -- Сергей дарит книгу
+
+----------------
+insert into "transaction"(id, date, sum, account_id, destination_id) values('1',  '2000-04-12', '4000', '3',  '2'); -- Миша скинулся на дисер Сереге
+insert into "transaction"(id, date, sum, account_id, destination_id) values('2',  '2000-04-13', '4000', '5',  '2'); -- Ваня скинулся на дисер Сереге
+insert into "transaction"(id, date, sum, account_id, destination_id) values('3',  '2000-04-15', '2000', '2',  '2'); -- Катя скинулась на дисер Сереге
+
+insert into "transaction"(id, date, sum, account_id, destination_id) values('4',  '2000-05-08', '5000', '3',  '8'); -- Миша скинулся на велик Кате
+insert into "transaction"(id, date, sum, account_id, destination_id) values('5',  '2000-05-02', '5000', '4',  '8'); -- Кноп скинулся на велик Кате
+insert into "transaction"(id, date, sum, account_id, destination_id) values('6',  '2000-05-10', '5000', '5',  '8'); -- Ваня скинулся на велик Кате
+
+insert into "transaction"(id, date, sum, account_id, destination_id) values('7',  '2000-05-28', '120',  '12', '7'); -- Оля скинулась на шампунь Юле
+
+insert into "transaction"(id, date, sum, account_id, destination_id) values('8',  '2000-05-11', '300',  '8',  '1'); -- Сергей скинулся на книгу Саше
+insert into "transaction"(id, date, sum, account_id, destination_id) values('9',  '2000-05-14', '300',  '12', '1'); -- Оля скинулась на книгу Саше
+insert into "transaction"(id, date, sum, account_id, destination_id) values('10', '2000-05-12', '300',  '11', '1'); -- Миша скинулся на книгу Саше
+insert into "transaction"(id, date, sum, account_id, destination_id) values('11', '2000-05-13', '300',  '9',  '1'); -- Арсен скинулся на книгу Саше
+insert into "transaction"(id, date, sum, account_id, destination_id) values('12', '2000-05-14', '300',  '1',  '1'); -- Женя скинулась на книгу Саше

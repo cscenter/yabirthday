@@ -1,70 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head lang="ru">
+        <meta charset="UTF-8">
+        <title>Яндекс.Подарки</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/all_users.js"></script>
+        <script type="text/javascript" src="js/cookiesLib.js"></script>
+    </head>
 
-<head>
-
-    <meta charset="utf-8">
-    <title>Яндекс.Подарки</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-
-    <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/all_users.js"></script>
-    <script src="js/cookiesLib.js"></script>
-</head>
-
-<body>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <!-- зачем это?-->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand"><a href="index.html" class="navbar-link"><span style="color:red">Я</span>ндекс.Подарки</a></div>
-        </div>
-        <div id="navbar" class="navbar-collapse bs-navbar-collapse collapse in">
-            <ul class="navbar-right nav navbar-nav">
-                <li><p id="money" class="navbar-text nav-tabs"> </p></li> <!--Баланс: 100500 ₽-->
-                <li class="dropdown">
-                    <a id="user-name" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"></a> <!--Артем Егоров <span class="caret"></span>-->
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="users.html">Все пользователи</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a onclick="deleteCookieAll()" href="index.html">Выход</a></li>
+    <body>
+        <!-- Navigation -->
+        <nav id="nhead" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nlinks">
+                    <span class="sr-only">Кнопка навигации</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="nbrand" class="navbar-header">
+                    <a href="index.html" class="navbar-brand navbar-link"><span style="color:red">Я</span>ндекс.Подарки</a>
+                </div>
+                <div id="nlinks" class="collapse navbar-collapse">
+                    <ul class="navbar-right nav navbar-nav">
+                        <li id="money" class="navbar-text"></li>
+                        <li class="dropdown">
+                            <a id="user-name" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="users.html">Все пользователи</a></li>
+                                <li><a href="#">Настройки</a></li>
+                                <li><a onclick="deleteCookieAll()" href="index.html">Выход</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+                </div>
+            </div>
+        </nav>
 
     <!-- Page Content -->
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                    <form class="form-group" role="search">
-                        <div class="input-group">
-                            <input id="my-input" type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
+                <form class="form-group" role="search">
+                    <div class="input-group">
+                        <input id="my-input" type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </div>
-                    </form>
+                    </div>
+                </form>
             </div>
         </div>
+
         <div id="users-views" class="row">
             <!-- js power -->
         </div>

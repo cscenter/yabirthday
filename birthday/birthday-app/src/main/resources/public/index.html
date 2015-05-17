@@ -1,130 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <head lang="ru">
+        <meta charset="UTF-8">
+        <title>Яндекс.Подарки</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/cookiesLib.js"></script>
+    </head>
 
-<head>
-
-    <meta charset="utf-8">
-    <title>Яндекс.Подарки</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/cookiesLib.js"></script>
-    <script src="js/main.js"></script>
-</head>
-
-<body>
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal" data-backdrop="static" data-keyboard="false" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form class="form-group-sm">
-                    <input type="text" class="form-control" placeholder="Login">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Войти</button>
+    <body>
+        <!-- Modal -->
+        <div class="modal" data-backdrop="static" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form class="form-group-sm">
+                            <input type="text" class="form-control" placeholder="Login">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Войти</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="navbar-brand"><a href="index.html" class="navbar-link"><span style="color:red">Я</span>ндекс.Подарки</a></div>
-        </div>
-        <div id="navbar" class="navbar-collapse bs-navbar-collapse collapse in">
-            <ul class="navbar-right nav navbar-nav">
-                <li><p id="money" class="navbar-text nav-tabs"> </p></li> <!-- Баланс: 100500 ₽ !--->
-                <li class="dropdown">
-                    <a id="user-name" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="true"></a> <!--Артем Егоров <span class="caret"></span> !-->
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="users.html">Все пользователи</a></li>
-                        <li><a href="#">Настройки</a></li>
-                        <li><a onclick="deleteCookieAll()" href="index.html">Выход</a></li>
+
+        <!-- Navigation -->
+        <nav id="nhead" class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nlinks">
+                    <span class="sr-only">Кнопка навигации</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="nbrand" class="navbar-header">
+                    <a href="#" class="navbar-brand navbar-link"><span style="color:red">Я</span>ндекс.Подарки</a>
+                </div>
+                <div id="nlinks" class="collapse navbar-collapse">
+                    <ul class="navbar-right nav navbar-nav">
+                        <li id="money" class="navbar-text"></li>
+                        <li class="dropdown">
+                            <a id="user-name" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="users.html">Все пользователи</a></li>
+                                <li><a href="#">Настройки</a></li>
+                                <li><a onclick="deleteCookieAll()" href="index.html">Выход</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>
+                </div>
+            </div>
+        </nav>
 
-<!-- Page Content -->
-<div class="container" id="loghide">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">Дни рождения</div>
-                <table id="friend-table" class="table text-center" style="text-align: center">
-                    <thead >
-                    <tr>
-                        <th style="text-align: center">Пользователь</th>
-                        <th style="text-align: center">День рождения</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- here is js power! -->
-                    </tbody>
-                </table>
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Дни рождения</div>
+                        <table id="friend-table" class="table">
+                            <thead>
+                            <tr>
+                                <th>Пользователь</th>
+                                <th>День рождения</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- here is js power! -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Мои транзакции</div>
+                        <table id="transaction-table" class="table">
+                            <thead>
+                            <tr>
+                                <th>Дата</th>
+                                <th>Сумма</th>
+                                <th>Подарок</th>
+                                <th>Получатель</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- here is js power! -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Мои подарки</div>
+                        <table id="gift-table" class="table">
+                            <thead>
+                            <tr>
+                                <th>Название</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- here is js power! -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Мои транзакции</div>
-
-                <!-- Table -->
-                <table id="transaction-table" class="table text-center" style="text-align: center">
-                    <thead >
-                    <tr>
-                        <th style="text-align: center">Дата</th>
-                        <th style="text-align: center">Сумма</th>
-                        <th style="text-align: center">Подарок</th>
-                        <th style="text-align: center">Получатель</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- here is js power! -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <!-- Default panel contents -->
-                <div class="panel-heading">Мои подарки</div>
-
-                <!-- Table -->
-                <table id="gift-table" class="table text-center" style="text-align: center">
-                    <thead>
-                    <tr>
-                        <th style="text-align: center">Название</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- here is js power! -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>
