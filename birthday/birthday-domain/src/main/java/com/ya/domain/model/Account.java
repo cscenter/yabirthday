@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 @Table(name="\"ACCOUNT\"")
 public class Account {
-    private long id;
+    private long id; 
     private User owner;
     private Cash cash;
     private long funds;
