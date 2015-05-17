@@ -10,5 +10,5 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("select u from Transaction u where account_id = :id")
     public  List<Transaction> listAccountTransactions(@org.springframework.data.repository.query.Param("id") long id);
 */
-    List<Transaction> findByAccount_id(long id);
+    List<Transaction> findByAccountId(long id);
 }

@@ -1,5 +1,6 @@
 
 ----------------
+
 insert into "group"(id, name) values('1', 'students');
 insert into "group"(id, name) values('2', 'curators');
 insert into "group"(id, name) values('3', 'teachers');
@@ -115,24 +116,24 @@ insert into "transaction"(id, date, sum, account_id, destination_id) values('11'
 insert into "transaction"(id, date, sum, account_id, destination_id) values('12', '2000-05-14', '300',  '1',  '13'); -- Женя скинулась на книгу Саше
 
 ----------------
-insert into "account_receiver"(source_id, destination_id) values( '3',   '6');  --- Миша может дарить Сереге
-insert into "account_receiver"(source_id, destination_id) values( '3',   '2');  --- Миша может дарить Кате
-insert into "account_receiver"(source_id, destination_id) values( '2',   '6');  --- Катя может дарить Сереге
-insert into "account_receiver"(source_id, destination_id) values( '4',   '2');  --- Кноп может дарить Кате
-insert into "account_receiver"(source_id, destination_id) values( '5',   '2');  --- Ваня может дарить Кате
-insert into "account_receiver"(source_id, destination_id) values( '7',   '1');
-insert into "account_receiver"(source_id, destination_id) values( '8',   '1');
-insert into "account_receiver"(source_id, destination_id) values( '9',   '1');
-insert into "account_receiver"(source_id, destination_id) values( '11',  '1');
-insert into "account_receiver"(source_id, destination_id) values( '4',   '3');
-insert into "account_receiver"(source_id, destination_id) values( '5',   '3');
-insert into "account_receiver"(source_id, destination_id) values( '6',   '3');
-insert into "account_receiver"(source_id, destination_id) values( '4',   '4');
-insert into "account_receiver"(source_id, destination_id) values( '5',   '6');  --- Ваня может дарить Сереге
-insert into "account_receiver"(source_id, destination_id) values( '12',  '7');  --- Оля может дарить Юле
-insert into "account_receiver"(source_id, destination_id) values( '12',  '11'); --- Оля может дарить Мише (Миша в обоих кассах)
-insert into "account_receiver"(source_id, destination_id) values( '12',  '13'); --- Оля может дарить Саше
-insert into "account_receiver"(source_id, destination_id) values( '11',  '13'); --- Миша может дарить Саше
-insert into "account_receiver"(source_id, destination_id) values( '9',   '13'); --- Арсен может дарить Саше
-insert into "account_receiver"(source_id, destination_id) values( '1',   '13'); --- Женя может дарить Саше
-insert into "account_receiver"(source_id, destination_id) values( '8',   '13'); --- Сергей может дарить Саше
+insert into "account_receiver"(account_id, receiver_id) values( '3',   '6');  --- Миша может дарить Сереге
+insert into "account_receiver"(account_id, receiver_id) values( '3',   '2');  --- Миша может дарить Кате
+insert into "account_receiver"(account_id, receiver_id) values( '2',   '6');  --- Катя может дарить Сереге
+insert into "account_receiver"(account_id, receiver_id) values( '4',   '2');  --- Кноп может дарить Кате
+insert into "account_receiver"(account_id, receiver_id) values( '5',   '2');  --- Ваня может дарить Кате
+insert into "account_receiver"(account_id, receiver_id) values( '7',   '1');
+insert into "account_receiver"(account_id, receiver_id) values( '8',   '1');
+insert into "account_receiver"(account_id, receiver_id) values( '9',   '1');
+insert into "account_receiver"(account_id, receiver_id) values( '11',  '1');
+insert into "account_receiver"(account_id, receiver_id) values( '4',   '3');
+insert into "account_receiver"(account_id, receiver_id) values( '5',   '3');
+insert into "account_receiver"(account_id, receiver_id) values( '6',   '3');
+insert into "account_receiver"(account_id, receiver_id) values( '4',   '4');
+insert into "account_receiver"(account_id, receiver_id) values( '5',   '6');  --- Ваня может дарить Сереге
+insert into "account_receiver"(account_id, receiver_id) values( '12',  '7');  --- Оля может дарить Юле
+insert into "account_receiver"(account_id, receiver_id) values( '12',  '11'); --- Оля может дарить Мише (Миша в обоих кассах)
+insert into "account_receiver"(account_id, receiver_id) values( '12',  '13'); --- Оля может дарить Саше
+insert into "account_receiver"(account_id, receiver_id) values( '11',  '13'); --- Миша может дарить Саше
+insert into "account_receiver"(account_id, receiver_id) values( '9',   '13'); --- Арсен может дарить Саше
+insert into "account_receiver"(account_id, receiver_id) values( '1',   '13'); --- Женя может дарить Саше
+insert into "account_receiver"(account_id, receiver_id) values( '8',   '13'); --- Сергей может дарить Саше

@@ -1,4 +1,4 @@
-package com.ya.domain;
+package com.ya.domain.service;
 
 import com.ya.domain.model.Account;
 import com.ya.domain.model.Transaction;
@@ -38,10 +38,10 @@ public class UserService {
     }
 
     public List<Transaction> listTransactions(String login) {
-        List<Transaction> transactions = new ArrayList<>();
-        List<Account> accounts = accountRepository.findByOwner_login(login);
+        List<Transaction> transactions = new ArrayList<Transaction>();
+        List<Account> accounts = accountRepository.findByOwnerLogin(login);
         for (Account acc : accounts) {
-            transactions.addAll(transactionRepository.findByAccount_id(acc.getId()));
+            transactions.addAll(transactionRepository.findByAccountId(acc.getId()));
         }
         return transactions;
     }

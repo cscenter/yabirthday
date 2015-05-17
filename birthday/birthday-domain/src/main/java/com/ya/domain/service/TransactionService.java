@@ -1,4 +1,4 @@
-package com.ya.domain;
+package com.ya.domain.service;
 
 import com.ya.domain.model.Transaction;
 import com.ya.domain.repository.TransactionRepository;
@@ -15,7 +15,7 @@ public class TransactionService {
     TransactionRepository transactionRepository;
 
     public List<Transaction> listAccountTransactions(long id) {
-        return transactionRepository.findByAccount_id(id);
+        return transactionRepository.findByAccountId(id);
     }
 
 }

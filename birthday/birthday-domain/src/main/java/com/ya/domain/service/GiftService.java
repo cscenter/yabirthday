@@ -1,4 +1,4 @@
-package com.ya.domain;
+package com.ya.domain.service;
 
 import com.ya.domain.model.Gift;
 import com.ya.domain.repository.GiftRepository;
@@ -19,6 +19,6 @@ public class GiftService {
     GiftRepository giftRepository;
 
     public List<Gift> listUserGifts(String login) {
-        return giftRepository.findByOwner_login(login);
+        return giftRepository.findByOwnerLogin(login);
     }
 }

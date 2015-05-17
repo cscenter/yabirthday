@@ -11,10 +11,10 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
             "( select * from \"user\" join account on account.owner_login = \"user\".login " +
-            "join account_receiver on account.id = account_receiver.source_id " +
+            "join account_receiver on account.id = account_receiver.account_id " +
             "where \"user\".login = :login ) a, \"user\" join account on account.owner_login = \"user\".login " +
-            "where account.id = a.destination_id ", nativeQuery = true)
-    public List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
+            "where account.id = a.receiver_id ", nativeQuery = true)
+    List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
 
 /*
     @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from \"user\" " +

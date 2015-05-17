@@ -11,5 +11,5 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     public List<Account> listUserAccounts(@org.springframework.data.repository.query.Param("login") String login);
     */
 
-    List<Account> findByOwner_login(String login);
+    List<Account> findByOwnerLogin(String login);
 }

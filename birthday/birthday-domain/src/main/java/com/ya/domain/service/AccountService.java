@@ -1,4 +1,4 @@
-package com.ya.domain;
+package com.ya.domain.service;
 
 import com.ya.domain.model.Account;
 import com.ya.domain.repository.AccountRepository;
@@ -19,6 +19,6 @@ public class AccountService {
     AccountRepository accountRepository;
 
     public List<Account> listUserAccounts(String login) {
-        return accountRepository.findByOwner_login(login);
+        return accountRepository.findByOwnerLogin(login);
     }
 }

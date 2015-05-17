@@ -1,10 +1,10 @@
 package com.ya.ws.service;
 
-import com.ya.domain.AccountService;
-import com.ya.domain.GiftService;
-import com.ya.domain.TransactionService;
-import com.ya.domain.UserService;
 import com.ya.domain.model.User;
+import com.ya.domain.service.AccountService;
+import com.ya.domain.service.GiftService;
+import com.ya.domain.service.TransactionService;
+import com.ya.domain.service.UserService;
 import com.ya.ws.dto.*;
 import org.springframework.stereotype.Service;
 
@@ -50,7 +50,16 @@ public class UserPageService {
     public List<UserDTO> listPartUsers(@PathParam("part") String part) {
         return userService.listPart(part).stream().map(UserDTO::new).collect(Collectors.toList());
     }
-
+/*
+    @GET
+    @Path("/test/")
+    public List<Long> ololo() {
+        List<Long> accs = new ArrayList<>();
+        accs.add(1l);
+        accs.add(5l);
+        return accountService.tryToGetAcc(accs);
+    }
+*/
 
 /*
     @GET

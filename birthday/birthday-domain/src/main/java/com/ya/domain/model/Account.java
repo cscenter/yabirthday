@@ -1,6 +1,8 @@
 package com.ya.domain.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="\"ACCOUNT\"")
@@ -9,7 +11,7 @@ public class Account {
     private User owner;
     private Cash cash;
     private long funds;
-    //private List<Account> receiver = new ArrayList<>();
+    private List<Account> receiver = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() {
@@ -45,21 +47,15 @@ public class Account {
     public void setFunds(long funds) {
         this.funds = funds;
     }
-/*
-    @ManyToMany //таблица создается верная, но у нее нет первичных ключей. Там 2 поля, оба должны быть первичным ключом
-    @PrimaryKeyJoinColumns({
-            @PrimaryKeyJoinColumn(name="id",
-                    referencedColumnName="account_id"),
-            @PrimaryKeyJoinColumn(name="id",
-                    referencedColumnName="receiver_id")
-    })
+
+    @ManyToMany
     public List<Account> getReceiver() {
         return receiver;
     }
 
     public void setReceiver(List<Account> receivers) {
         this.receiver = receivers;
-    } */
+    }
 /*
     public void addTransaction(Transaction trans) {
         transactions.add(trans);
