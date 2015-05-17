@@ -23,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 */
 
     List<User> findByLoginContainingIgnoreCase(String part); //jpa magic!
-
+ 
 //    @Query("select u from User u where u.login = :login")
 //    User findByLogin(@Param("login") String login);
 }
