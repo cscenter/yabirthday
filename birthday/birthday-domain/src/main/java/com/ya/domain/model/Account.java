@@ -12,7 +12,7 @@ public class Account {
     private Cash cash;
     private long funds;
     private List<Account> receiver = new ArrayList<>();
-
+ 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() { 
         return id;
