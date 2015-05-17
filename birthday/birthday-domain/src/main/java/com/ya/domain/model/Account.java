@@ -14,7 +14,7 @@ public class Account {
     private List<Account> receiver = new ArrayList<>();
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
+    public long getId() { 
         return id;
     }
 
