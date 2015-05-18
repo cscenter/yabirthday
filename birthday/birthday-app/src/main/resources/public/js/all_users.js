@@ -22,14 +22,33 @@ $(function() {
 
     function load_data(path) {
         $.get(path, function(data) {
+            var hozain = getCookie(uName);
+            var friends = getFriends(hozain);
             for (var k = 0; k < data.length; k++) {
                 var user = data[k];
+
+                var button = "";
+                var uId = user.login;
+                if (isFriend( user.login, friends)){ // hozain --> user.login
+                    var actionDel = "\"delFriend('" + user.login + "')\"";
+                    button = "<button id=\"" + uId + "\" type=\"button\" onclick= " +
+                        actionDel +
+                        "class=\"btn btn-danger\"><span class=\"glyphicon glyphicon-minus\"></span></button>";
+                }else {
+                    var actionAdd = "\"addFriend('" + user.login + "')\"";
+                    button = "<button id=\"" + uId + "\" type=\"button\" onclick= " +
+                        actionAdd +
+                        " class=\"btn btn-success\"><span class=\"glyphicon glyphicon-plus\"></span></button>";
+                }
+                if(user.login == hozain) {
+                    button = "";
+                }
                 $("#users-views").append(
                     "<div class=\"col-md-3\">" +
                     "<div class=\"panel panel-default\">" +
                     "<div class=\"panel-heading\">" +
                     "<div class=\"pull-right btn-group btn-group-xs\" role=\"group\">" +
-                    "<button type=\"button\" class=\"btn btn-success\"><span class=\"glyphicon glyphicon-plus\"></span></button>" +
+                    button +
                     "</div><div class=\"panel-title\">" + user.login + "</div>" +
                     "</div><div class=\"panel-body\">" +
                     "<h6 class=\"label label-info\">" + user.group.name + "</h6> " +
