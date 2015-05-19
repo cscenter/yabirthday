@@ -15,6 +15,11 @@ public class UserDTO {
     private final LocalDate birthday;
     private final GroupDTO group;
 
+    @Override
+    public boolean equals(Object obj) {
+        return (this.login.compareTo(((UserDTO)obj).getLogin()) == 0);
+    }
+
     public UserDTO(String login, LocalDate birthday, GroupDTO group) {
         this.login = login;
         this.birthday = birthday;

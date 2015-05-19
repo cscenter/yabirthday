@@ -51,7 +51,6 @@ $('document').ready(
         }
 
         function getUserData(login) {
-            alert("get the data " + login);
             var result = null;
             var scriptUrl = "/api/user/" + login;
             $.ajax({

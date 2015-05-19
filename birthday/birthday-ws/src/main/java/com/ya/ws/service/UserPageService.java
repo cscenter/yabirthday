@@ -38,7 +38,7 @@ public class UserPageService {
     public UserPageDTO mainPage(@PathParam("login") String login) {
         return convert_userPage(userService.get(login));
     }
-
+/*
     @GET
     @Path("/users/")
     public List<UserDTO> listUsers() {
@@ -50,6 +50,7 @@ public class UserPageService {
     public List<UserDTO> listPartUsers(@PathParam("part") String part) {
         return userService.listPart(part).stream().map(UserDTO::new).collect(Collectors.toList());
     }
+    */
 /*
     @GET
     @Path("/test/")
