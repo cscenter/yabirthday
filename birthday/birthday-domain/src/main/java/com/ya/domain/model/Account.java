@@ -11,11 +11,11 @@ public class Account {
     private User owner;
     private Cash cash;
     private long funds;
-    private List<Account> receiver = new ArrayList<>();
-
+    private List<User> friends = new ArrayList<>();
+/*
     public void addReceiver(Account account) {
-        receiver.add(account);
-    }
+        friends.add(account);
+    } */
  
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() { 
@@ -53,12 +53,12 @@ public class Account {
     }
 
     @ManyToMany
-    public List<Account> getReceiver() {
-        return receiver;
+    public List<User> getFriends() {
+        return friends;
     }
 
-    public void setReceiver(List<Account> receivers) {
-        this.receiver = receivers;
+    public void setFriends(List<User> receivers) {
+        this.friends = receivers;
     }
 /*
     public void addTransaction(Transaction trans) {
@@ -80,7 +80,7 @@ public class Account {
     }
 
 //    public void addReceiver(Account account) {
-//        receiver.add(account);
+//        friends.add(account);
 //    }
 
     public boolean isInCash(Cash cash) {

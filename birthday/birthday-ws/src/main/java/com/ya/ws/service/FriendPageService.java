@@ -42,6 +42,18 @@ public class FriendPageService {
         return convertFriendPagePart(login, part);
     }
 
+    @GET
+    @Path("/add/{login}/{friendLogin}")
+    public AccountDTO addFriend(@PathParam("login") String login, @PathParam("friendLogin") String friendLogin) {
+        return new AccountDTO(userService.addFriend(login, friendLogin));
+    }
+/*
+    @GET
+    @Path("/add/{acc}/{rec}")
+    public AccountDTO addFriend(@PathParam("acc") long acc, @PathParam("rec") long rec) {
+        return new AccountDTO(accountService.addFriend(acc, rec));
+    } */
+
     private long howMuchMoney(String login) {
         List<AccountDTO> accounts = accountService.listUserAccounts(login).stream().map(AccountDTO::new).collect(Collectors.toList());
         long funds = 0;

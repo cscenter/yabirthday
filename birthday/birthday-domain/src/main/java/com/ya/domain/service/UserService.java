@@ -46,6 +46,23 @@ public class UserService {
         return transactions;
     }
 
+    public Account addFriend(String login, String friendLogin) {
+        List<Account> userAccs = accountRepository.findByOwnerLogin(login);
+
+        User friend = userRepository.findOne(friendLogin);
+        long cash = friend.getCash().getId();
+
+        for (int acc = 0; acc < userAccs.size(); acc++) {
+            if (userAccs.get(acc).getCash().getId() == cash) {
+                accountRepository.findOne(userAccs.get(acc).getId())
+                        .getFriends().add(userRepository.findByLogin(friendLogin));
+                return userAccs.get(acc);
+            }
+        }
+        //иначе плохо все
+        return userAccs.get(0);
+    }
+
     public List<User> listUserFriends(String login) {
         return userRepository.listUserFriends(login);
     }

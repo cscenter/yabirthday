@@ -9,12 +9,19 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<User, String> {
     User findByLogin(String login);
 
-    @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
+    @Query(value = "select distinct \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
             "( select * from \"user\" join account on account.owner_login = \"user\".login " +
-            "join account_receiver on account.id = account_receiver.account_id " +
+            "join account_friends on account.id = account_friends.account_id " +
             "where \"user\".login = :login ) a, \"user\" join account on account.owner_login = \"user\".login " +
-            "where account.id = a.receiver_id ", nativeQuery = true)
+            "where \"user\".login = a.friends_login ", nativeQuery = true)
     List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
+
+//    @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
+//            "( select * from \"user\" join account on account.owner_login = \"user\".login " +
+//            "join account_receiver on account.id = account_receiver.account_id " +
+//            "where \"user\".login = :login ) a, \"user\" join account on account.owner_login = \"user\".login " +
+//            "where account.id = a.receiver_id ", nativeQuery = true)
+//    List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
 
 /*
     @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from \"user\" " +

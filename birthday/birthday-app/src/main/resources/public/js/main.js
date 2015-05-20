@@ -39,7 +39,7 @@ $('document').ready(
                     else {
                         gift_name = gift.name;
                         gift_owner = gift.owner.login;
-                        gift_price = "-" + transaction.sum;
+                        gift_price = transaction.sum;
                     }
                     $("#transaction-table").find("> tbody").append(
                         "<tr>" +
