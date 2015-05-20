@@ -129,6 +129,7 @@ insert into "transaction"(id, date, sum, account_id, destination_id) values('4',
 insert into "transaction"(id, date, sum, account_id, destination_id) values('5',  '2000-05-02', '5000', '4',  '8'); -- Кноп скинулся на велик Кате
 insert into "transaction"(id, date, sum, account_id, destination_id) values('6',  '2000-05-10', '5000', '5',  '8'); -- Ваня скинулся на велик Кате
 
+
 insert into "transaction"(id, date, sum, account_id, destination_id) values('7',  '2000-05-28', '120',  '12', '7'); -- Оля скинулась на шампунь Юле
 
 insert into "transaction"(id, date, sum, account_id, destination_id) values('8',  '2000-05-11', '300',  '8',  '1'); -- Сергей скинулся на книгу Саше
@@ -136,3 +137,4 @@ insert into "transaction"(id, date, sum, account_id, destination_id) values('9',
 insert into "transaction"(id, date, sum, account_id, destination_id) values('10', '2000-05-12', '300',  '11', '1'); -- Миша скинулся на книгу Саше
 insert into "transaction"(id, date, sum, account_id, destination_id) values('11', '2000-05-13', '300',  '9',  '1'); -- Арсен скинулся на книгу Саше
 insert into "transaction"(id, date, sum, account_id, destination_id) values('12', '2000-05-14', '300',  '1',  '1'); -- Женя скинулась на книгу Саше
+insert into "transaction"(id, date, sum, account_id, destination_id) values('13',  '2000-04-20', '1500',  '12', NULL); -- Оля кинула денег на счет
