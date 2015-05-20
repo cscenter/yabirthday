@@ -101,7 +101,7 @@ $('document').ready(
                 loadAll(ans);
             }
             else {
-                alert('No such user. Try again');
+                alert('No such user.');
             }
         });
     });

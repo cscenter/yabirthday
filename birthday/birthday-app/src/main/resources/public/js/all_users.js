@@ -7,29 +7,26 @@ const i_am = 1;
 const non_friend = 2;
 
 function addFriend(name) {
-    //alert("add friend: " + name);
-    var button = document.getElementById(name);
-    button.innerHTML  = "<span class=\"glyphicon glyphicon-minus\">";
-    button.onclick =  function() { delFriend(name); };
-    button.className = "btn btn-danger";
+    var hozain = getCookie(uName);
+    $.get("/api/friend/add/" + hozain + "/" + name, function(data) {});
 
-    // send request to server
+    var button = document.getElementById(name);
+    button.innerHTML = "<span class=\"glyphicon glyphicon-minus\">";
+    button.onclick = function () { delFriend(name); };
+    button.className = "btn btn-danger";
 }
 
 function delFriend(name) {
-    //alert("delete friend: " + name);
-    var button = document.getElementById(name);
-    button.innerHTML  = "<span class=\"glyphicon glyphicon-plus\">";
-    button.onclick =  function() { addFriend(name); };
-    button.className = "btn btn-success";
+    var hozain = getCookie(uName);
+    $.get("/api/friend/del/" + hozain + "/" + name, function(data) {});
 
-    // send request to server
+    var button = document.getElementById(name);
+    button.innerHTML = "<span class=\"glyphicon glyphicon-plus\">";
+    button.onclick = function() { addFriend(name); };
+    button.className = "btn btn-success";
 }
 
-
 $(function() {
-    //$("#money").html("Баланс: " + getCookie(uMoney) + " ₽");
-    //$("#money-name").html("Баланс: " + getCookie(uMoney)/*user_money*/ + " ₽" + "<span class=\"caret\"></span>");
     $("#user-name").html(getCookie(uName) + "<span class=\"caret\"></span>");
     load_data("/api/friend/" + getCookie(uName));
 
@@ -46,7 +43,6 @@ $(function() {
             var userAccs = data.userAccs;
             for (var k = 0; k < userAccs.length; k++) {
                 var acc = userAccs[k];
-                //alert(acc.funds);
                 $("#cur-money").append("<li><a>" + acc.funds + " ₽, " + "кассир: " + acc.cash.owner.login + "</a></li>");
             }
 

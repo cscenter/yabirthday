@@ -54,17 +54,31 @@ public class UserService {
 
         for (int acc = 0; acc < userAccs.size(); acc++) {
             if (userAccs.get(acc).getCash().getId() == cash) {
-                accountRepository.findOne(userAccs.get(acc).getId())
+                Account account = userAccs.get(acc);
+                accountRepository.findOne(account.getId())
                         .getFriends().add(userRepository.findByLogin(friendLogin));
-                return userAccs.get(acc);
+                return accountRepository.save(account);
             }
         }
 
         Account account = new Account(userRepository.findOne(login), friend.getCash());
-        //это одно и то же
-        //accountRepository.findAll().add(account);
-        userRepository.findOne(login).getAccounts().add(account);
-        return account;
+        accountRepository.save(account);
+        accountRepository.findOne(account.getId()).getFriends().add(userRepository.findByLogin(friendLogin));
+        return accountRepository.save(account);
+    }
+
+    public Account removeFriend(String login, String friendLogin) {
+        long cash = userRepository.findOne(friendLogin).getCash().getId();
+        List<Account> accounts = userRepository.findByLogin(login).getAccounts();
+        Account acc = new Account();
+        for (int i = 0; i < accounts.size(); i++) {
+            if (accounts.get(i).getCash().getId() == cash) {
+                acc = accounts.get(i);
+                break;
+            }
+        }
+        accountRepository.findOne(acc.getId()).getFriends().remove(userRepository.findOne(friendLogin));
+        return accountRepository.save(acc);
     }
 
     public List<User> listUserFriends(String login) {

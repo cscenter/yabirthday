@@ -3,34 +3,20 @@ package com.ya.domain.repository;
 import com.ya.domain.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, String> {
     User findByLogin(String login);
 
-    @Query(value = "select distinct \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
-            "( select * from \"user\" join account on account.owner_login = \"user\".login " +
+    @Query(value = "select * from \"user\" " +
+            "where \"user\".login in (select account_friends.friends_login " +
+            "from \"user\" join account on account.owner_login = \"user\".login " +
             "join account_friends on account.id = account_friends.account_id " +
-            "where \"user\".login = :login ) a, \"user\" join account on account.owner_login = \"user\".login " +
-            "where \"user\".login = a.friends_login ", nativeQuery = true)
-    List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
-
-//    @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from " +
-//            "( select * from \"user\" join account on account.owner_login = \"user\".login " +
-//            "join account_receiver on account.id = account_receiver.account_id " +
-//            "where \"user\".login = :login ) a, \"user\" join account on account.owner_login = \"user\".login " +
-//            "where account.id = a.receiver_id ", nativeQuery = true)
-//    List<User> listUserFriends(@org.springframework.data.repository.query.Param("login") String login);
-
-/*
-    @Query(value = "select \"user\".login, \"user\".birthday, \"user\".cash_id, \"user\".group_id from \"user\" " +
-            "where \"user\".login like ('%' || :part || '%') ", nativeQuery = true)
-    public List<User> listPartUsers(@org.springframework.data.repository.query.Param("part") String part);
-*/
+            "where \"user\".login = :login )", nativeQuery = true)
+    List<User> listUserFriends(@Param("login") String login);
 
     List<User> findByLoginContainingIgnoreCase(String part); //jpa magic!
-    
-//    @Query("select u from User u where u.login = :login")
-//    User findByLogin(@Param("login") String login);
 }
+

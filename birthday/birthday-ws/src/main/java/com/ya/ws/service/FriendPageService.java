@@ -47,12 +47,12 @@ public class FriendPageService {
     public AccountDTO addFriend(@PathParam("login") String login, @PathParam("friendLogin") String friendLogin) {
         return new AccountDTO(userService.addFriend(login, friendLogin));
     }
-/*
+
     @GET
-    @Path("/add/{acc}/{rec}")
-    public AccountDTO addFriend(@PathParam("acc") long acc, @PathParam("rec") long rec) {
-        return new AccountDTO(accountService.addFriend(acc, rec));
-    } */
+    @Path("/del/{login}/{friendLogin}")
+    public AccountDTO removeFriend(@PathParam("login") String login, @PathParam("friendLogin") String friendLogin) {
+        return new AccountDTO(userService.removeFriend(login, friendLogin));
+    }
 
     private long howMuchMoney(String login) {
         List<AccountDTO> accounts = accountService.listUserAccounts(login).stream().map(AccountDTO::new).collect(Collectors.toList());

@@ -2,7 +2,6 @@
  * Created by olya on 13.05.15.
  */
 const uName = "userName";
-const uMoney = "userBalance";
 
 function getCookie(name) {
     var matches = document.cookie.match(new RegExp(

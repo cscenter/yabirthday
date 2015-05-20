@@ -12,12 +12,9 @@ public class Account {
     private Cash cash;
     private long funds;
     private List<User> friends = new ArrayList<>();
-/*
-    public void addReceiver(Account account) {
-        friends.add(account);
-    } */
- 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @SequenceGenerator(name="ACC_SEQ", initialValue=150, allocationSize = 49)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ACC_SEQ")
     public long getId() { 
         return id;
     }
@@ -44,6 +41,7 @@ public class Account {
         this.cash = cash;
     }
 
+
     public long getFunds() {
         return funds;
     }
@@ -60,28 +58,13 @@ public class Account {
     public void setFriends(List<User> receivers) {
         this.friends = receivers;
     }
-/*
-    public void addTransaction(Transaction trans) {
-        transactions.add(trans);
-    } */
 
-
-/*
-    public List<Transaction> getTransactions() { //тут должен быть селект!!!
-        //select * from transaction where account_id = this.id
-        return new ArrayList<Transaction>();
-    } */
-
-    protected Account() { }
+    public Account() { }
 
     public Account(User owner, Cash cash) {
         this.owner = owner;
         this.cash = cash;
     }
-
-//    public void addReceiver(Account account) {
-//        friends.add(account);
-//    }
 
     public boolean isInCash(Cash cash) {
         return (this.cash == cash);
