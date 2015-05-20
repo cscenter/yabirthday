@@ -1,11 +1,9 @@
 package com.ya.domain.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="\"USER\"")
@@ -14,6 +12,7 @@ public class User implements Serializable {
     private LocalDate birthday;
     private Cash cash;
     private Group group;
+    private List<Account> accounts;
 
     @Id
     public String getLogin()
@@ -47,6 +46,14 @@ public class User implements Serializable {
     public Group getGroup() {return group;}
 
     public void setGroup(Group group) {this.group = group; }
+
+    @OneToMany(mappedBy = "owner")
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public void setAccounts(List<Account> accounts) {this.accounts = accounts;}
+
 
     protected User() { }
 

@@ -26,7 +26,7 @@ public class Account {
         this.id = id;
     }
 
-    @OneToOne
+    @ManyToOne
     public User getOwner() {
         return owner;
     }

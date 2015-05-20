@@ -59,8 +59,12 @@ public class UserService {
                 return userAccs.get(acc);
             }
         }
-        //иначе плохо все
-        return userAccs.get(0);
+
+        Account account = new Account(userRepository.findOne(login), friend.getCash());
+        //это одно и то же
+        //accountRepository.findAll().add(account);
+        userRepository.findOne(login).getAccounts().add(account);
+        return account;
     }
 
     public List<User> listUserFriends(String login) {
