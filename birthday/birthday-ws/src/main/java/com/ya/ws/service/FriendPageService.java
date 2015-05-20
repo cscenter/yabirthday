@@ -1,6 +1,8 @@
 package com.ya.ws.service;
 
+import com.ya.domain.service.AccountService;
 import com.ya.domain.service.UserService;
+import com.ya.ws.dto.AccountDTO;
 import com.ya.ws.dto.FriendPageDTO;
 import com.ya.ws.dto.UserDTO;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,9 @@ public class FriendPageService {
     @Inject
     UserService userService;
 
+    @Inject
+    AccountService accountService;
+
     @GET
     @Path("/{login}")
     public FriendPageDTO friendPage(@PathParam("login") String login) {
@@ -35,6 +40,15 @@ public class FriendPageService {
     @Path("/{login}/{part}")
     public FriendPageDTO searchPage(@PathParam("login") String login, @PathParam("part") String part) {
         return convertFriendPagePart(login, part);
+    }
+
+    private long howMuchMoney(String login) {
+        List<AccountDTO> accounts = accountService.listUserAccounts(login).stream().map(AccountDTO::new).collect(Collectors.toList());
+        long funds = 0;
+        for(int i = 0; i < accounts.size(); i++) {
+            funds += accounts.get(i).getFunds();
+        }
+        return funds;
     }
 
     private FriendPageDTO convertFriendPage(String login) {
@@ -52,7 +66,9 @@ public class FriendPageService {
                 status.add(2);
             }
         }
-        return new FriendPageDTO(users, status);
+        return new FriendPageDTO(users, status,
+                accountService.listUserAccounts(login).stream().map(AccountDTO::new).collect(Collectors.toList()),
+                howMuchMoney(login));
     }
 
     private FriendPageDTO convertFriendPagePart(String login, String part) {
@@ -70,7 +86,9 @@ public class FriendPageService {
                 status.add(2);
             }
         }
-        return new FriendPageDTO(users, status);
+        return new FriendPageDTO(users, status,
+                accountService.listUserAccounts(login).stream().map(AccountDTO::new).collect(Collectors.toList()),
+                howMuchMoney(login));
     }
 
 }

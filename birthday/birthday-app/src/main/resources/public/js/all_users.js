@@ -28,7 +28,8 @@ function delFriend(name) {
 
 
 $(function() {
-    $("#money").html("Баланс: " + getCookie(uMoney) + " ₽");
+    //$("#money").html("Баланс: " + getCookie(uMoney) + " ₽");
+    //$("#money-name").html("Баланс: " + getCookie(uMoney)/*user_money*/ + " ₽" + "<span class=\"caret\"></span>");
     $("#user-name").html(getCookie(uName) + "<span class=\"caret\"></span>");
     load_data("/api/friend/" + getCookie(uName));
 
@@ -40,6 +41,15 @@ $(function() {
 
     function load_data(path) {
         $.get(path, function(data) {
+            $("#money-name").html("Баланс: " + data.money + " ₽" + "<span class=\"caret\"></span>");
+
+            var userAccs = data.userAccs;
+            for (var k = 0; k < userAccs.length; k++) {
+                var acc = userAccs[k];
+                //alert(acc.funds);
+                $("#cur-money").append("<li><a>" + acc.funds + " ₽, " + "кассир: " + acc.cash.owner.login + "</a></li>");
+            }
+
             data = data.users;
             for (var k = 0; k < data.length; k++) {
                 var user = data[k];

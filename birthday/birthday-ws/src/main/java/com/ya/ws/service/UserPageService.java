@@ -130,7 +130,7 @@ public class UserPageService {
 
     private UserPageDTO convert_userPage(User user) {
         return new UserPageDTO(new UserDTO(user), //new CashDTO(user.getCash()),
-             //   accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList()),
+                accountService.listUserAccounts(user.getLogin()).stream().map(AccountDTO::new).collect(Collectors.toList()),
                 userService.listTransactions(user.getLogin()).stream().map(TransactionDTO::new).collect(Collectors.toList()),
                 userService.listUserFriends(user.getLogin()).stream().map(UserDTO::new).collect(Collectors.toList()),
                 giftService.listUserGifts(user.getLogin()).stream().map(GiftDTO::new).collect(Collectors.toList()),

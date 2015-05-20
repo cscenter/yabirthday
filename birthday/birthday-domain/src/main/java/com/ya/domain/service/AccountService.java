@@ -21,4 +21,8 @@ public class AccountService {
     public List<Account> listUserAccounts(String login) {
         return accountRepository.findByOwnerLogin(login);
     }
+
+    public void addFriend(Account account) {//accountRepository.addFriend(id1.toString(), id2.toString());}
+
+    }
 }

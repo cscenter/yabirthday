@@ -9,6 +9,7 @@ $('document').ready(
 
         function loadAll(data) {
                 var user = data.user; //UserDTO user
+                var userAccs = data.userAccs;
                 var transactions = data.transactions; //List<TransactionDTO> transactions
                 var friends = data.friends; //List<UserDTO> friends
                 var gifts = data.gifts; //List<GiftDTO> gifts
@@ -46,8 +47,16 @@ $('document').ready(
                 }
 
                 $("#user-name").html(user.login + "<span class=\"caret\"></span>");
-                $("#money").html("Баланс: " + user_money + " ₽");
+                //$("#money").html("Баланс: " + user_money + " ₽");
+                $("#money-name").html("Баланс: " + user_money + " ₽" + "<span class=\"caret\"></span>");
                 setCookie(uMoney, user_money);
+
+            for (var k = 0; k < userAccs.length; k++) {
+                var acc = userAccs[k];
+                //alert(acc.funds);
+                $("#cur-money").append("<li><a>" + acc.funds + " ₽, " + "кассир: " + acc.cash.owner.login + "</a></li>");
+            }
+
         }
 
         function getUserData(login) {

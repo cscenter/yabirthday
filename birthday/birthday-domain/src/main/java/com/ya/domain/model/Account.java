@@ -12,6 +12,10 @@ public class Account {
     private Cash cash;
     private long funds;
     private List<Account> receiver = new ArrayList<>();
+
+    public void addReceiver(Account account) {
+        receiver.add(account);
+    }
  
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     public long getId() { 

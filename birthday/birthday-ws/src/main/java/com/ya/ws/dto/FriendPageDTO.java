@@ -25,14 +25,23 @@ public class FriendPageDTO {
     }
 
     private final List<Friend> users;
+    private final List<AccountDTO> userAccs;
+    private final long money;
+
 
     public List<Friend> getUsers() {return users;}
 
-    public FriendPageDTO(List<UserDTO> users, List<Integer> status) {
+    public List<AccountDTO> getUserAccs() {return userAccs;}
+
+    public long getMoney() {return money;}
+
+    public FriendPageDTO(List<UserDTO> users, List<Integer> status, List<AccountDTO> userAccs, long money) {
         List<Friend> tempUsers = new ArrayList<>();
         for (int i = 0; i < users.size(); i++) {
             tempUsers.add(new Friend(users.get(i), status.get(i)));
         }
         this.users = tempUsers;
+        this.userAccs = userAccs;
+        this.money = money;
     }
 }
