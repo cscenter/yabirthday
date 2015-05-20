@@ -27,7 +27,12 @@ public class TransactionDTO {
         this.sum = transaction.getSum();
         this.date = transaction.getDate();
         this.account = new AccountDTO(transaction.getAccount());
-        this.destination = new GiftDTO(transaction.getDestination());
+        if (transaction.getDestination() != null) {
+            this.destination = new GiftDTO(transaction.getDestination());
+        }
+        else {
+            this.destination = null;
+        }
     }
 
 

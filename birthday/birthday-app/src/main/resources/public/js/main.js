@@ -27,12 +27,26 @@ $('document').ready(
 
                 for (var k = 0; k < transactions.length; k++) {
                     var transaction = transactions[k];
+                    var gift = transaction.destination;
+                    var gift_name;
+                    var gift_owner;
+                    var gift_price;
+                    if (gift == null) {
+                        gift_name = "";
+                        gift_owner = "";
+                        gift_price = "+" + transaction.sum;
+                    }
+                    else {
+                        gift_name = gift.name;
+                        gift_owner = gift.owner.login;
+                        gift_price = "-" + transaction.sum;
+                    }
                     $("#transaction-table").find("> tbody").append(
                         "<tr>" +
                         "<td>" + transaction.date + "</td>" +
-                        "<td>" + transaction.sum + " ₽" + "</td>" +
-                        "<td>" + transaction.destination.name + "</td>" +
-                        "<td><a href=\"#\">" + transaction.destination.owner.login + "</a></td>" +
+                        "<td>" + gift_price + " ₽" + "</td>" +
+                        "<td>" + gift_name + "</td>" +
+                        "<td><a href=\"#\">" + gift_owner + "</a></td>" +
                         "</tr>"
                     );
                 }

@@ -60,7 +60,6 @@ insert into "gift"(id , name, owned, price, owner_login) values('7', 'shower',  
 insert into "gift"(id , name, owned, price, owner_login) values('8', 'bicycle',       'false', '15000',  'lebedeva' );
 
 
-
 ----------------
 insert into "account"(id , funds, cash_id, owner_login) values('1',  '4000', '42', 'kulikova' );
 
