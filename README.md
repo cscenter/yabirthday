@@ -1,16 +1,17 @@
-# yabirthday (прототип)
+# Яндекс.Подарки (прототип)
 
 ## Контакты
 
 ### Руководители:
 
-* Сергей Киселев: kiselev@gmail.com, https://vk.com/intr13
 * Артем Григорьев: ortemij@gmail.com, https://vk.com/ortemij
+* Сергей Киселев: kiselev@gmail.com, https://vk.com/intr13
 
 ### Студенты:
+
 * Равиь Галеев: neboskrebb@gmail.com, https://vk.com/dehasi
-* Ольга Тележная: olyatelezhnaya@gmail.com, https://vk.com/olyaa
 * Максим Кузьмин: maxrider@mail.ru, http://vk.com/id2558840
+* Ольга Тележная: olyatelezhnaya@gmail.com, https://vk.com/olyaa
 
 ## Идея проекта
 
