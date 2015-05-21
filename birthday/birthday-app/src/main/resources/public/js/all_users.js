@@ -89,7 +89,7 @@ $(function() {
                     "</div><div class=\"panel-title\">" + user.user.login + "</div>" +
                     "</div><div class=\"panel-body\">" +
                     "<h6 class=\"label " + group + "\">" + user.user.group.name + "</h6> " +
-                    "<h6 class=\"label label-info\">" + user.user.birthday + "</h6>" +
+                    "<h6 class=\"label group-color-date\">" + user.user.birthday + "</h6>" +
                     "</div></div></div>");
             }
         });
