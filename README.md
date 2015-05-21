@@ -53,6 +53,7 @@
 * Установите недостающий soft
 * В IntelliJ выберите "Import Maven project"
 * В pgAdmin создайте сервер c именем пользователя postgres и паролем password. В этом сервере создайте базу данных с именем birthday. (имена и пароль можно при желании поменять в файле ./birthday/birthday-app/src/main/resources/application.properties)
+* Точка входа ./birthday/birthday-app/src/main/java/com/ya/Main.java
 * Наслаждайтесь :-)
 * Результат виден в браузере по адресу localhost:8080
 * Список пользователей можно взять в базе данных в таблице user в столбике login
