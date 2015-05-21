@@ -65,6 +65,21 @@ $(function() {
                 else {
                     button = "";
                 }
+                var group = user.user.group.name[0];
+                switch (group) {
+                    case 's':
+                        group = "group-color-student";
+                        break
+                    case 'c':
+                        group = "group-color-curator";
+                        break
+                    case 't':
+                        group = "group-color-teacher";
+                        break
+                    default:
+                        group = "group-color-default";
+                }
+
                 $("#users-views").append(
                     "<div class=\"col-md-3\">" +
                     "<div class=\"panel panel-default\">" +
@@ -73,7 +88,7 @@ $(function() {
                     button +
                     "</div><div class=\"panel-title\">" + user.user.login + "</div>" +
                     "</div><div class=\"panel-body\">" +
-                    "<h6 class=\"label label-info\">" + user.user.group.name + "</h6> " +
+                    "<h6 class=\"label " + group + "\">" + user.user.group.name + "</h6> " +
                     "<h6 class=\"label label-info\">" + user.user.birthday + "</h6>" +
                     "</div></div></div>");
             }

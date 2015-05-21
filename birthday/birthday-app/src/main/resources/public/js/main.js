@@ -31,18 +31,21 @@ $('document').ready(
                     var gift_name;
                     var gift_owner;
                     var gift_price;
+                    var color = "";
                     if (gift == null) {
                         gift_name = "";
                         gift_owner = "";
                         gift_price = "+" + transaction.sum;
+                        color = " class=\"alert-success\"";
                     }
                     else {
                         gift_name = gift.name;
                         gift_owner = gift.owner.login;
                         gift_price = transaction.sum;
+                        color = " class=\"alert-warning\"";
                     }
                     $("#transaction-table").find("> tbody").append(
-                        "<tr>" +
+                        "<tr" + color + ">" +
                         "<td>" + transaction.date + "</td>" +
                         "<td>" + gift_price + " ₽" + "</td>" +
                         "<td>" + gift_name + "</td>" +
@@ -63,14 +66,12 @@ $('document').ready(
                 $("#user-name").html(user.login + "<span class=\"caret\"></span>");
                 //$("#money").html("Баланс: " + user_money + " ₽");
                 $("#money-name").html("Баланс: " + user_money + " ₽" + "<span class=\"caret\"></span>");
-                setCookie(uMoney, user_money);
 
             for (var k = 0; k < userAccs.length; k++) {
                 var acc = userAccs[k];
                 //alert(acc.funds);
                 $("#cur-money").append("<li><a>" + acc.funds + " ₽, " + "кассир: " + acc.cash.owner.login + "</a></li>");
             }
-
         }
 
         function getUserData(login) {

@@ -23,3 +23,23 @@ body {
     text-align: left;
     vertical-align: middle;
 }
+
+.group-color-student {
+    background-color: #b2dba1;
+    color: deeppink;
+}
+
+.group-color-teacher {
+    background-color: springgreen;
+    color: tomato;
+}
+
+.group-color-curator {
+    background-color: #bce8f1;
+    color: #c9302c;
+}
+
+.group-color-default {
+    background-color: #080808;
+    color: snow;
+}
