@@ -42,14 +42,14 @@ public class FriendPageService {
         return convertFriendPagePart(login, part);
     }
 
-    @GET
-    @Path("/add/{login}/{friendLogin}")
+    @PUT
+    @Path("/{login}/{friendLogin}")
     public AccountDTO addFriend(@PathParam("login") String login, @PathParam("friendLogin") String friendLogin) {
         return new AccountDTO(userService.addFriend(login, friendLogin));
     }
 
-    @GET
-    @Path("/del/{login}/{friendLogin}")
+    @DELETE
+    @Path("/{login}/{friendLogin}")
     public AccountDTO removeFriend(@PathParam("login") String login, @PathParam("friendLogin") String friendLogin) {
         return new AccountDTO(userService.removeFriend(login, friendLogin));
     }

@@ -8,7 +8,11 @@ const non_friend = 2;
 
 function addFriend(name) {
     var hozain = getCookie(uName);
-    $.get("/api/friend/add/" + hozain + "/" + name, function(data) {});
+    $.ajax({
+        url: "/api/friend/" + hozain + "/" + name,
+        type: "PUT",
+        success: function(data) {}
+    });
 
     var button = document.getElementById(name);
     button.innerHTML = "<span class=\"glyphicon glyphicon-minus\">";
@@ -18,7 +22,11 @@ function addFriend(name) {
 
 function delFriend(name) {
     var hozain = getCookie(uName);
-    $.get("/api/friend/del/" + hozain + "/" + name, function(data) {});
+    $.ajax({
+        url: "/api/friend/" + hozain + "/" + name,
+        type: "DELETE",
+        success: function(data) {}
+    });
 
     var button = document.getElementById(name);
     button.innerHTML = "<span class=\"glyphicon glyphicon-plus\">";
